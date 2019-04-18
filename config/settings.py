@@ -27,6 +27,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     # third-party
+    'rest_framework',
+    'drf_yasg',
     'phonenumber_field',
 
     # apps
@@ -113,5 +115,9 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
+
+# Auth
+
+AUTHENTICATION_BACKENDS = ('config.auth_backends.EmailOrSocialBackend',)
 
 AUTH_USER_MODEL = 'users.User'

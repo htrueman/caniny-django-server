@@ -1,11 +1,43 @@
-from django.contrib.auth.base_user import AbstractBaseUser
+import uuid
+
+from django.contrib.auth.base_user import AbstractBaseUser, BaseUserManager
+from django.contrib.auth.models import PermissionsMixin
 from django.db import models
 from django.utils.translation import gettext_lazy as _
-
 from phonenumber_field.modelfields import PhoneNumberField
 
 
-class User(AbstractBaseUser):
+class UserManager(BaseUserManager):
+    use_in_migrations = True
+
+    def _create_user(self, id, password, **extra_fields):
+        """
+        Create and save a user with the given email, and password.
+        """
+        user = self.model(id=id, **extra_fields)
+        user.set_password(password)
+        user.save(using=self._db)
+        return user
+
+    def create_user(self, id=None, password=None, **extra_fields):
+        extra_fields.setdefault('is_staff', False)
+        extra_fields.setdefault('is_superuser', False)
+        return self._create_user(id, password, **extra_fields)
+
+    def create_superuser(self, id, password, **extra_fields):
+        extra_fields.setdefault('is_staff', True)
+        extra_fields.setdefault('is_superuser', True)
+
+        if extra_fields.get('is_staff') is not True:
+            raise ValueError('Superuser must have is_staff=True.')
+        if extra_fields.get('is_superuser') is not True:
+            raise ValueError('Superuser must have is_superuser=True.')
+
+        return self._create_user(id, password, **extra_fields)
+
+
+class User(AbstractBaseUser, PermissionsMixin):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     first_name = models.CharField(
         _('first name'),
         max_length=30,
@@ -14,7 +46,6 @@ class User(AbstractBaseUser):
     last_name = models.CharField(
         _('last name'),
         max_length=150,
-        blank=True,
         null=True
     )
     phone_number = PhoneNumberField(
@@ -25,13 +56,14 @@ class User(AbstractBaseUser):
     )
     email = models.EmailField(
         _('email address'),
-        blank=True,
         null=True,
         unique=True
     )
     address = models.CharField(
-        _('email address'),
-        max_length=256
+        _('address'),
+        max_length=256,
+        null=True,
+        blank=True
     )
     is_staff = models.BooleanField(
         _('staff status'),
@@ -51,17 +83,31 @@ class User(AbstractBaseUser):
     google_key = models.CharField(
         max_length=256,
         null=True,
-        blank=True
+        blank=True,
+        unique=True
     )
     instagram_key = models.CharField(
         max_length=256,
         null=True,
-        blank=True
+        blank=True,
+        unique=True
     )
     facebook_key = models.CharField(
         max_length=256,
         null=True,
-        blank=True
+        blank=True,
+        unique=True
     )
 
-    USERNAME_FIELD = 'email'
+    USERNAME_FIELD = 'id'
+    AUTH_FIELDS = (
+        'email',
+        'google_key',
+        'instagram_key',
+        'facebook_key',
+    )
+
+    objects = UserManager()
+
+    def __str__(self):
+        return str(self.id)
