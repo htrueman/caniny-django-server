@@ -1,16 +1,14 @@
 import os
 import sys
+from datetime import timedelta
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-APPS_ROOT = os.path.join(BASE_DIR, 'apps')
+APPS_ROOT = os.path.join(BASE_DIR, '../apps')
 
 sys.path.insert(0, APPS_ROOT)
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'y!@*)!_ncrs7w&#(6^9!!hw!1=9)z0k+91glxo)6#()_t4jl%$'
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
 
 ALLOWED_HOSTS = []
 
@@ -132,7 +130,7 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.IsAuthenticated',
     ),
     'DEFAULT_AUTHENTICATION_CLASSES': (
-        # 'rest_framework_simplejwt.authentication.JWTAuthentication',
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
         'rest_framework.authentication.SessionAuthentication',
         'rest_framework.authentication.BasicAuthentication',
     ),
@@ -159,4 +157,13 @@ SWAGGER_SETTINGS = {
     'USE_SESSION_AUTH': True,
     'JSON_EDITOR': True,
     'DEFAULT_AUTO_SCHEMA_CLASS': 'config.routers.CategorizedAutoSchema',
+}
+
+
+# Simple JWT
+
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=60),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=365),
+    'ROTATE_REFRESH_TOKENS': True,
 }
