@@ -17,7 +17,7 @@ class CategorizedAutoSchema(SwaggerAutoSchema):
 
 schema_view = get_schema_view(
     openapi.Info(
-      title="Top Market Platform API",
+      title="Caniny (K9 Digital)",
       default_version='v1',
     ),
     permission_classes=(IsAdminUser,),
