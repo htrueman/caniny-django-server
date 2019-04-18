@@ -25,7 +25,9 @@ class User(AbstractBaseUser):
     )
     email = models.EmailField(
         _('email address'),
-        blank=True
+        blank=True,
+        null=True,
+        unique=True
     )
     address = models.CharField(
         _('email address'),
@@ -61,3 +63,5 @@ class User(AbstractBaseUser):
         null=True,
         blank=True
     )
+
+    USERNAME_FIELD = 'email'

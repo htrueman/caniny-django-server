@@ -6,6 +6,7 @@ from .serializers import UserSignUpSerializer
 
 User = get_user_model()
 
+
 class SignUpViewSet(viewsets.ModelViewSet):
     permission_classes = (AllowAny,)
     http_method_names = ('post',)
