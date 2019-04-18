@@ -1,12 +1,14 @@
 from django.contrib.auth import get_user_model
 from rest_framework import viewsets, mixins, status
 from rest_framework.decorators import api_view
+from rest_framework.generics import RetrieveAPIView, GenericAPIView
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
+from rest_framework_simplejwt.views import TokenViewBase
 
 from .utils import account_activation_token
 from .serializers import UserSignUpSerializer, UserSignUpGoogleSerializer, UserSignUpFBSerializer, \
-    UserSignUpIGSerializer
+    UserSignUpIGSerializer, LoginSerializer
 
 User = get_user_model()
 
@@ -47,3 +49,14 @@ def activate(request, uidb64, token, *args, **kwargs):
         return Response({'status': 'Thank you for your email confirmation. Now you can log in to your account.'})
     else:
         return Response({'status': 'Activation link is invalid!'}, status=status.HTTP_400_BAD_REQUEST)
+
+
+class LoginView(GenericAPIView):
+    serializer_class = LoginSerializer
+    permission_classes = (AllowAny,)
+
+    def post(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        if not serializer.is_valid(raise_exception=False):
+            print(serializer.errors)
+        return Response(serializer.validated_data, status=status.HTTP_200_OK)
