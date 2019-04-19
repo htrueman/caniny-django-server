@@ -1,5 +1,3 @@
-import pdb
-
 from django.contrib.auth import get_user_model, authenticate
 
 from django.core.mail import send_mail
@@ -7,11 +5,10 @@ from django.template.loader import render_to_string
 from rest_framework import serializers
 from rest_framework.exceptions import ValidationError
 from django.utils.translation import gettext_lazy as _
-from django.conf import settings
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework import exceptions
 
-from .utils import account_activation_token
+from .utils import send_activation_token
 
 User = get_user_model()
 
@@ -53,12 +50,8 @@ class UserSignUpSerializer(serializers.ModelSerializer):
         user.save()
 
         mail_subject = 'Activate your account.'
-        message = render_to_string('account_activation_email.html', {
-            'domain': settings.HOST_NAME,
-            'uid': user.pk,
-            'token': account_activation_token.make_token(user),
-        })
-        send_mail(mail_subject, message, settings.DEFAULT_FROM_EMAIL, (validated_data['email'],))
+        template_name = 'account_activation_email.html'
+        send_activation_token(mail_subject, template_name, user, validated_data['email'])
 
         return user
 
@@ -180,3 +173,35 @@ class RequestAccessSerializer(serializers.ModelSerializer):
         user.is_active = False
         user.save()
         return user
+
+
+class PasswordResetSendLinkSerializer(serializers.Serializer):
+    email = serializers.EmailField()
+
+    def validate(self, attrs):
+        try:
+            user = User.objects.get(email=attrs['email'])
+            mail_subject = 'Reset password.'
+            template_name = 'reset_password_email.html'
+            send_activation_token(mail_subject, template_name, user, attrs['email'])
+        except User.DoesNotExist:
+            pass
+        return attrs
+
+
+class ConfirmPasswordResetSerializer(serializers.Serializer):
+    password_1 = serializers.CharField(
+        max_length=128,
+        style={'input_type': 'password'},
+        write_only=True
+    )
+    password_2 = serializers.CharField(
+        max_length=128,
+        style={'input_type': 'password'},
+        write_only=True
+    )
+
+    def validate(self, attrs):
+        if attrs['password_1'] != attrs['password_2']:
+            raise ValidationError(_('Passwords didn\'t match.'))
+        return attrs

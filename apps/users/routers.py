@@ -38,7 +38,7 @@ class ProfileRouter(routers.SimpleRouter):
             initkwargs={}
         ),
         routers.Route(
-            url=r'^register/request-access/$',
+            url=r'^register/request_access/$',
             mapping={'post': 'request_access'},
             name='{basename}-request-access',
             detail=True,
@@ -47,13 +47,16 @@ class ProfileRouter(routers.SimpleRouter):
     ]
 
 
-router = ProfileRouter()
-router.register('', views.SignUpViewSet, base_name='SignUp')
+profile_router = ProfileRouter()
+profile_router.register('', views.SignUpViewSet, base_name='SignUp')
 
-urlpatterns = router.urls
+urlpatterns = profile_router.urls
 
 urlpatterns += [
     path('register/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('register/activate/<uuid:uidb64>/<str:token>/', views.activate, name='activate'),
     path('login/', views.LoginView.as_view(), name='token_obtain_pair'),
+    path('password-reset/', views.PasswordResetView.as_view()),
+    path('password-reset-confirm/<uuid:id>/<str:token>/', views.ConfirmPasswordResetView.as_view(),
+         name='password_reset'),
 ]
