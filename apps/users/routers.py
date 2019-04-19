@@ -31,7 +31,7 @@ class ProfileRouter(routers.SimpleRouter):
             initkwargs={}
         ),
         routers.Route(
-            url=r'register/^$',
+            url=r'^register/$',
             mapping={'post': 'create'},
             name='{basename}',
             detail=True,
