@@ -37,6 +37,13 @@ class ProfileRouter(routers.SimpleRouter):
             detail=True,
             initkwargs={}
         ),
+        routers.Route(
+            url=r'^register/request-access/$',
+            mapping={'post': 'request_access'},
+            name='{basename}-request-access',
+            detail=True,
+            initkwargs={}
+        ),
     ]
 
 

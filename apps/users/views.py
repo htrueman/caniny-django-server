@@ -1,14 +1,13 @@
 from django.contrib.auth import get_user_model
 from rest_framework import viewsets, mixins, status
 from rest_framework.decorators import api_view
-from rest_framework.generics import RetrieveAPIView, GenericAPIView
+from rest_framework.generics import GenericAPIView, CreateAPIView
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
-from rest_framework_simplejwt.views import TokenViewBase
 
 from .utils import account_activation_token
 from .serializers import UserSignUpSerializer, UserSignUpGoogleSerializer, UserSignUpFBSerializer, \
-    UserSignUpIGSerializer, LoginSerializer
+    UserSignUpIGSerializer, LoginSerializer, RequestAccessSerializer
 
 User = get_user_model()
 
@@ -25,6 +24,8 @@ class SignUpViewSet(mixins.CreateModelMixin,
             return UserSignUpFBSerializer
         elif self.action == 'instagram':
             return UserSignUpIGSerializer
+        elif self.action == 'request_access':
+            return RequestAccessSerializer
         return UserSignUpSerializer
 
     def google(self, request, *args, **kwargs):
@@ -34,6 +35,9 @@ class SignUpViewSet(mixins.CreateModelMixin,
         return self.create(request, *args, **kwargs)
 
     def instagram(self, request, *args, **kwargs):
+        return self.create(request, *args, **kwargs)
+
+    def request_access(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
 
 

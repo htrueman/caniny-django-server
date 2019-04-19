@@ -162,3 +162,21 @@ class LoginSerializer(serializers.Serializer):
         data['access'] = str(refresh.access_token)
 
         return data
+
+
+class RequestAccessSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = (
+            'first_name',
+            'last_name',
+            'email',
+            'description',
+            'organization'
+        )
+
+    def create(self, validated_data):
+        user = super().create(validated_data)
+        user.is_active = False
+        user.save()
+        return user

@@ -78,6 +78,10 @@ class User(AbstractBaseUser, PermissionsMixin):
             'Unselect this instead of deleting accounts.'
         ),
     )
+    description = models.TextField(
+        blank=True,
+        null=True
+    )
 
     # social identifiers
     google_key = models.CharField(
@@ -97,6 +101,12 @@ class User(AbstractBaseUser, PermissionsMixin):
         null=True,
         blank=True,
         unique=True
+    )
+
+    organization = models.ForeignKey(
+        'organizations.Organization',
+        on_delete=models.CASCADE,
+        null=True
     )
 
     USERNAME_FIELD = 'id'
