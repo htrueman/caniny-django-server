@@ -69,6 +69,7 @@ class LoginView(GenericAPIView):
 
 class PasswordResetView(GenericAPIView):
     serializer_class = PasswordResetSendLinkSerializer
+    permission_classes = (AllowAny,)
 
     def get_success_headers(self, data):
         try:
@@ -85,6 +86,7 @@ class PasswordResetView(GenericAPIView):
 
 class ConfirmPasswordResetView(GenericAPIView):
     serializer_class = ConfirmPasswordResetSerializer
+    permission_classes = (AllowAny,)
 
     def get_success_headers(self, data):
         try:
