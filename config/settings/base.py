@@ -10,7 +10,7 @@ sys.path.insert(0, APPS_ROOT)
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'y!@*)!_ncrs7w&#(6^9!!hw!1=9)z0k+91glxo)6#()_t4jl%$'
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
