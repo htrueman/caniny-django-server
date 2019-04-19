@@ -1,22 +1,37 @@
+import re
+from uuid import UUID
+
 from django.contrib.auth import get_user_model
-from django.contrib.auth.backends import ModelBackend
 from django.db.models import Q
 
 UserModel = get_user_model()
 
 
 class EmailOrSocialBackend:
-    def authenticate(self, request, username=None, password=None, **kwargs):
+    def get_user(self, user_id):
         try:
-            user = UserModel.objects.get(Q(id=username)
-                                         | Q(email=username)
-                                         | Q(google_key=username)
-                                         | Q(instagram_key=username)
-                                         | Q(facebook_key=username))
-        # except UserModel.DoesNotExist:
-        #     # Run the default password hasher once to reduce the timing
-        #     # difference between an existing and a nonexistent user (#20760).
-        #     UserModel().set_password(password)
-        # else:
-        #     if user.check_password(password) and self.user_can_authenticate(user):
-        #         return user
+            return UserModel.objects.get(pk=user_id)
+        except UserModel.DoesNotExist:
+            return None
+
+    def authenticate(self, request, username=None, password=None, **kwargs):
+        api_auth = False
+
+        try:
+            username = UUID(username, version=4)
+            query = Q(id=username)
+        except ValueError:
+            if re.match(r"[^@]+@[^@]+\.[^@]+", username):
+                query = Q(email=username)
+            else:
+                query = Q(google_key=username) \
+                        | Q(instagram_key=username) \
+                        | Q(facebook_key=username)
+                api_auth = True
+        try:
+            user = UserModel.objects.get(query)
+        except UserModel.DoesNotExist:
+            UserModel().set_password(password)
+        else:
+            if (not api_auth and user.check_password(password)) or api_auth:
+                return user

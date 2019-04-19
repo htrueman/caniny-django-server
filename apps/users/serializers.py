@@ -1,3 +1,5 @@
+import pdb
+
 from django.contrib.auth import get_user_model, authenticate
 
 from django.core.mail import send_mail
@@ -6,9 +8,6 @@ from rest_framework import serializers
 from rest_framework.exceptions import ValidationError
 from django.utils.translation import gettext_lazy as _
 from django.conf import settings
-from django.utils.encoding import force_bytes
-from django.utils.http import urlsafe_base64_encode
-from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework import exceptions
 
@@ -107,6 +106,12 @@ class LoginSerializer(serializers.Serializer):
     google_key = serializers.CharField(required=False)
     instagram_key = serializers.CharField(required=False)
     facebook_key = serializers.CharField(required=False)
+    password = serializers.CharField(
+        max_length=128,
+        style={'input_type': 'password'},
+        write_only=True,
+        required=False
+    )
 
     default_error_messages = {
         'no_active_account': _('No active account found with the given credentials')
@@ -115,7 +120,7 @@ class LoginSerializer(serializers.Serializer):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
-        self.fields['password'] = PasswordField()
+        # self.fields['password'] = PasswordField(required=False)
 
     @classmethod
     def get_token(cls, user):
@@ -136,7 +141,7 @@ class LoginSerializer(serializers.Serializer):
 
         authenticate_kwargs = {
             'username': attrs[username_field],
-            'password': attrs['password'],
+            'password': attrs.get('password'),
         }
         try:
             authenticate_kwargs['request'] = self.context['request']

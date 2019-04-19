@@ -28,13 +28,13 @@ class SignUpViewSet(mixins.CreateModelMixin,
         return UserSignUpSerializer
 
     def google(self, request, *args, **kwargs):
-        pass
+        return self.create(request, *args, **kwargs)
 
     def facebook(self, request, *args, **kwargs):
-        pass
+        return self.create(request, *args, **kwargs)
 
     def instagram(self, request, *args, **kwargs):
-        pass
+        return self.create(request, *args, **kwargs)
 
 
 @api_view(['GET'])
@@ -57,6 +57,5 @@ class LoginView(GenericAPIView):
 
     def post(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
-        if not serializer.is_valid(raise_exception=False):
-            print(serializer.errors)
+        serializer.is_valid(raise_exception=True)
         return Response(serializer.validated_data, status=status.HTTP_200_OK)
