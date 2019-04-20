@@ -1,3 +1,4 @@
+import requests
 from django.contrib.auth import get_user_model, authenticate
 from rest_framework import serializers
 from rest_framework.exceptions import ValidationError
@@ -5,9 +6,18 @@ from django.utils.translation import gettext_lazy as _
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework import exceptions
 
+from organizations.models import Organization
 from .utils import send_activation_token
 
 User = get_user_model()
+
+
+class SignUpOrganizationSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Organization
+        fields = (
+            'name',
+        )
 
 
 class UserSignUpSerializer(serializers.ModelSerializer):
@@ -21,6 +31,7 @@ class UserSignUpSerializer(serializers.ModelSerializer):
         style={'input_type': 'password'},
         write_only=True
     )
+    organization_dict = SignUpOrganizationSerializer(source='organization', required=True)
 
     class Meta:
         model = User
@@ -28,11 +39,10 @@ class UserSignUpSerializer(serializers.ModelSerializer):
             'email',
             'password_1',
             'password_2',
-            'organization',
+            'organization_dict',
         )
         extra_kwargs = {
             'email': {'required': True},
-            'organization': {'required': True},
         }
 
     def validate(self, attrs):
@@ -41,11 +51,14 @@ class UserSignUpSerializer(serializers.ModelSerializer):
         return attrs
 
     def create(self, validated_data):
+        org_dict = validated_data.pop('organization')
+        organization = Organization.objects.create(**org_dict)
         password = validated_data.pop('password_1')
         validated_data.pop('password_2')
         user = super().create(validated_data)
         user.set_password(password)
         user.is_active = False
+        user.organization = organization
         user.save()
 
         mail_subject = 'Activate your account.'
@@ -55,7 +68,19 @@ class UserSignUpSerializer(serializers.ModelSerializer):
         return user
 
 
-class UserSignUpFBSerializer(serializers.ModelSerializer):
+class UserSocialSerializerMixin:
+    def create(self, validated_data):
+        org_dict = validated_data.pop('organization')
+        organization = Organization.objects.create(**org_dict)
+        user = super().create(validated_data)
+        user.organization = organization
+        user.save()
+        return user
+
+
+class UserSignUpFBSerializer(UserSocialSerializerMixin, serializers.ModelSerializer):
+    organization_dict = SignUpOrganizationSerializer(source='organization', required=True)
+
     class Meta:
         model = User
         fields = (
@@ -63,15 +88,16 @@ class UserSignUpFBSerializer(serializers.ModelSerializer):
             'last_name',
             'email',
             'facebook_key',
-            'organization',
+            'organization_dict',
         )
         extra_kwargs = {
             'facebook_key': {'required': True},
-            'organization': {'required': True},
         }
 
 
-class UserSignUpGoogleSerializer(serializers.ModelSerializer):
+class UserSignUpGoogleSerializer(UserSocialSerializerMixin, serializers.ModelSerializer):
+    organization_dict = SignUpOrganizationSerializer(source='organization', required=True)
+
     class Meta:
         model = User
         fields = (
@@ -79,10 +105,10 @@ class UserSignUpGoogleSerializer(serializers.ModelSerializer):
             'last_name',
             'email',
             'google_key',
+            'organization_dict',
         )
         extra_kwargs = {
             'google_key': {'required': True},
-            'organization': {'required': True},
         }
 
 
@@ -91,6 +117,40 @@ class UserSignUpIGSerializer(serializers.Serializer):
 
     # TODO: complete
 
+# class UserSignUpIGSerializer(UserSocialSerializerMixin, serializers.ModelSerializer):
+#     instagram_token = serializers.CharField(max_length=256)
+#
+#     class Meta:
+#         model = User
+#         fields = (
+#             'username',
+#             'first_name',
+#             'last_name',
+#             'instagram_key',
+#
+#             'instagram_token',
+#             'organization',
+#         )
+#         extra_kwargs = {
+#             'organization': {'required': True},
+#             'username': {'read_only': True},
+#             'first_name': {'read_only': True},
+#             'last_name': {'read_only': True},
+#             'instagram_key': {'read_only': True},
+#         }
+#
+#     def validate(self, attrs):
+#         requests.post(
+#             'https://api.instagram.com/oauth/access_token',
+#             data={
+#                 'client_id': 'f3348e7068014838b57204b555950e39',
+#                 'client_secret': 'cc82cf73afb64f8a8863e3bff65033e3',
+#                 'grant_type': 'authorization_code',
+#                 'redirect_uri': 'http://localhost:3000/registration',
+#                 'code': 'CODE',
+#             }
+#         )
+#         return attrs
 
 class PasswordField(serializers.CharField):
     def __init__(self, *args, **kwargs):
