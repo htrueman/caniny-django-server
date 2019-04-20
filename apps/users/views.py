@@ -6,6 +6,7 @@ from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from rest_framework.settings import api_settings
 
+from .constants import UserTypes
 from .utils import account_activation_token
 from .serializers import UserSignUpSerializer, UserSignUpGoogleSerializer, UserSignUpFBSerializer, \
     UserSignUpIGSerializer, LoginSerializer, RequestAccessSerializer, \
@@ -30,6 +31,11 @@ class SignUpViewSet(mixins.CreateModelMixin,
             return RequestAccessSerializer
         return UserSignUpSerializer
 
+    def perform_create(self, serializer):
+        user = serializer.save()
+        user.user_type = UserTypes.SUPER_ADMIN
+        user.save()
+
     def google(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
 
@@ -40,7 +46,11 @@ class SignUpViewSet(mixins.CreateModelMixin,
         return self.create(request, *args, **kwargs)
 
     def request_access(self, request, *args, **kwargs):
-        return self.create(request, *args, **kwargs)
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        headers = self.get_success_headers(serializer.data)
+        return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
 
 
 @api_view(['GET'])

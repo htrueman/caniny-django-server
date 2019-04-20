@@ -6,6 +6,8 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 from phonenumber_field.modelfields import PhoneNumberField
 
+from .constants import UserTypes
+
 
 class UserManager(BaseUserManager):
     use_in_migrations = True
@@ -109,6 +111,12 @@ class User(AbstractBaseUser, PermissionsMixin):
         null=True
     )
 
+    user_type = models.CharField(
+        choices=UserTypes.USER_TYPES,
+        default=UserTypes.HELPER,
+        max_length=12
+    )
+
     USERNAME_FIELD = 'id'
     AUTH_FIELDS = (
         'email',
@@ -121,3 +129,9 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     def __str__(self):
         return str(self.id)
+
+    def save(self, *args, **kwargs):
+        if self.is_staff and self.is_superuser:
+            self.user_type = UserTypes.DJANGO_ADMIN
+
+        super().save(*args, **kwargs)
