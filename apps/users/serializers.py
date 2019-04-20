@@ -5,6 +5,7 @@ from rest_framework.exceptions import ValidationError
 from django.utils.translation import gettext_lazy as _
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework import exceptions
+from django.conf import settings
 
 from organizations.models import Organization
 from .utils import send_activation_token
@@ -112,45 +113,51 @@ class UserSignUpGoogleSerializer(UserSocialSerializerMixin, serializers.ModelSer
         }
 
 
-class UserSignUpIGSerializer(serializers.Serializer):
-    token = serializers.CharField(max_length=256)
+class UserSignUpIGSerializer(UserSocialSerializerMixin, serializers.ModelSerializer):
+    instagram_code = serializers.CharField(max_length=256)
+    organization_dict = SignUpOrganizationSerializer(source='organization', required=True)
 
-    # TODO: complete
+    class Meta:
+        model = User
+        fields = (
+            'first_name',
+            'last_name',
+            'instagram_key',
 
-# class UserSignUpIGSerializer(UserSocialSerializerMixin, serializers.ModelSerializer):
-#     instagram_token = serializers.CharField(max_length=256)
-#
-#     class Meta:
-#         model = User
-#         fields = (
-#             'username',
-#             'first_name',
-#             'last_name',
-#             'instagram_key',
-#
-#             'instagram_token',
-#             'organization',
-#         )
-#         extra_kwargs = {
-#             'organization': {'required': True},
-#             'username': {'read_only': True},
-#             'first_name': {'read_only': True},
-#             'last_name': {'read_only': True},
-#             'instagram_key': {'read_only': True},
-#         }
-#
-#     def validate(self, attrs):
-#         requests.post(
-#             'https://api.instagram.com/oauth/access_token',
-#             data={
-#                 'client_id': 'f3348e7068014838b57204b555950e39',
-#                 'client_secret': 'cc82cf73afb64f8a8863e3bff65033e3',
-#                 'grant_type': 'authorization_code',
-#                 'redirect_uri': 'http://localhost:3000/registration',
-#                 'code': 'CODE',
-#             }
-#         )
-#         return attrs
+            'instagram_code',
+            'organization_dict',
+        )
+        extra_kwargs = {
+            'first_name': {'read_only': True},
+            'last_name': {'read_only': True},
+            'instagram_key': {'read_only': True},
+        }
+
+    def validate(self, attrs):
+        res = requests.post(
+            'https://api.instagram.com/oauth/access_token',
+            data={
+                'client_id': settings.INSTAGRAM_CLIENT_ID,
+                'client_secret': settings.INSTAGRAM_CLIENT_SECRET,
+                'grant_type': 'authorization_code',
+                'redirect_uri': settings.REDIRECT_URL,
+                'code': attrs['instagram_code'],
+            }
+        )
+        result_dict = res.json()
+
+        if User.objects.filter(instagram_key=result_dict['access_token']).exists():
+            raise ValidationError({'instagramKey': _('user with this instagram key already exists.')})
+
+        full_name_list = result_dict['user']['full_name'].split()
+        attrs['instagram_key'] = result_dict['access_token']
+        attrs['first_name'] = full_name_list[0]
+        attrs['last_name'] = full_name_list[1] if len(full_name_list) >= 2 else None
+
+        attrs.pop('instagram_code')
+
+        return attrs
+
 
 class PasswordField(serializers.CharField):
     def __init__(self, *args, **kwargs):
