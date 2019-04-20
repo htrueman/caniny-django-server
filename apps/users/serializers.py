@@ -1,7 +1,4 @@
 from django.contrib.auth import get_user_model, authenticate
-
-from django.core.mail import send_mail
-from django.template.loader import render_to_string
 from rest_framework import serializers
 from rest_framework.exceptions import ValidationError
 from django.utils.translation import gettext_lazy as _
@@ -31,9 +28,11 @@ class UserSignUpSerializer(serializers.ModelSerializer):
             'email',
             'password_1',
             'password_2',
+            'organization',
         )
         extra_kwargs = {
-            'email': {'required': True}
+            'email': {'required': True},
+            'organization': {'required': True},
         }
 
     def validate(self, attrs):
@@ -64,7 +63,12 @@ class UserSignUpFBSerializer(serializers.ModelSerializer):
             'last_name',
             'email',
             'facebook_key',
+            'organization',
         )
+        extra_kwargs = {
+            'facebook_key': {'required': True},
+            'organization': {'required': True},
+        }
 
 
 class UserSignUpGoogleSerializer(serializers.ModelSerializer):
@@ -76,6 +80,10 @@ class UserSignUpGoogleSerializer(serializers.ModelSerializer):
             'email',
             'google_key',
         )
+        extra_kwargs = {
+            'google_key': {'required': True},
+            'organization': {'required': True},
+        }
 
 
 class UserSignUpIGSerializer(serializers.Serializer):
@@ -109,11 +117,6 @@ class LoginSerializer(serializers.Serializer):
     default_error_messages = {
         'no_active_account': _('No active account found with the given credentials')
     }
-
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-
-        # self.fields['password'] = PasswordField(required=False)
 
     @classmethod
     def get_token(cls, user):
