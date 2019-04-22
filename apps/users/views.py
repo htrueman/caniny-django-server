@@ -55,6 +55,7 @@ class SignUpViewSet(mixins.CreateModelMixin,
 
 
 @api_view(['GET'])
+@permission_classes((AllowAny,))
 def activate(request, uidb64, token, *args, **kwargs):
     try:
         user = User.objects.get(pk=uidb64)
