@@ -1,5 +1,6 @@
 import requests
 from django.contrib.auth import get_user_model, authenticate
+from drf_extra_fields.fields import Base64ImageField
 from rest_framework import serializers
 from rest_framework.exceptions import ValidationError
 from django.utils.translation import gettext_lazy as _
@@ -259,7 +260,7 @@ class PasswordResetSendLinkSerializer(serializers.Serializer):
         return attrs
 
 
-class ConfirmPasswordResetSerializer(serializers.Serializer):
+class PasswordResetSerializer(serializers.Serializer):
     password_1 = serializers.CharField(
         max_length=128,
         style={'input_type': 'password'},
@@ -275,3 +276,21 @@ class ConfirmPasswordResetSerializer(serializers.Serializer):
         if attrs['password_1'] != attrs['password_2']:
             raise ValidationError(_('Passwords didn\'t match.'))
         return attrs
+
+
+class UserSerializer(serializers.ModelSerializer):
+    avatar = Base64ImageField(source='profile_image')
+
+    class Meta:
+        model = User
+        fields = (
+            'id',
+            'first_name',
+            'last_name',
+            'phone_number',
+            'email',
+            'address',
+            'description',
+            'avatar',
+            'user_type',
+        )

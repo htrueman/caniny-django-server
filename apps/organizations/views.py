@@ -11,5 +11,5 @@ class OrganizationViewSet(viewsets.ModelViewSet):
 
     def get_permissions(self):
         if self.action == 'list':
-            return [AllowAny(), ]
+            return [AllowAny()]
         return super().get_permissions()

@@ -84,6 +84,11 @@ class User(AbstractBaseUser, PermissionsMixin):
         blank=True,
         null=True
     )
+    profile_image = models.ImageField(
+        upload_to='users/profile_images',
+        null=True,
+        blank=True
+    )
 
     # social identifiers
     google_key = models.CharField(

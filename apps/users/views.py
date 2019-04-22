@@ -1,6 +1,6 @@
 from django.contrib.auth import get_user_model
 from rest_framework import viewsets, mixins, status
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, action
 from rest_framework.generics import GenericAPIView
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
@@ -10,7 +10,8 @@ from .constants import UserTypes
 from .utils import account_activation_token
 from .serializers import UserSignUpSerializer, UserSignUpGoogleSerializer, UserSignUpFBSerializer, \
     UserSignUpIGSerializer, LoginSerializer, RequestAccessSerializer, \
-    PasswordResetSendLinkSerializer, ConfirmPasswordResetSerializer
+    PasswordResetSendLinkSerializer, PasswordResetSerializer, UserSerializer
+from . import permissions as user_permissions
 
 User = get_user_model()
 
@@ -95,7 +96,7 @@ class PasswordResetView(GenericAPIView):
 
 
 class ConfirmPasswordResetView(GenericAPIView):
-    serializer_class = ConfirmPasswordResetSerializer
+    serializer_class = PasswordResetSerializer
     permission_classes = (AllowAny,)
 
     def get_success_headers(self, data):
@@ -119,3 +120,39 @@ class ConfirmPasswordResetView(GenericAPIView):
             return Response({'status': 'Password changed.'}, status=status.HTTP_200_OK, headers=headers)
         else:
             return Response({'status': 'Token link is not valid!'}, status=status.HTTP_400_BAD_REQUEST)
+
+
+class UserViewSet(mixins.RetrieveModelMixin,
+                  mixins.UpdateModelMixin,
+                  mixins.DestroyModelMixin,
+                  mixins.ListModelMixin,
+                  viewsets.GenericViewSet):
+
+    def get_serializer_class(self):
+        if self.action == 'change_password':
+            return PasswordResetSerializer
+
+        return UserSerializer
+
+    def get_permissions(self):
+        if self.action in ('list', 'destroy'):
+            return [user_permissions.SuperAdminPermission()]
+        return super().get_permissions()
+
+    def get_queryset(self):
+        return User.objects.filter(organization=self.request.user.organization)
+
+    def get_success_headers(self, data):
+        try:
+            return {'Location': str(data[api_settings.URL_FIELD_NAME])}
+        except (TypeError, KeyError):
+            return {}
+
+    @action(detail=True, methods=['PATCH'])
+    def change_password(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        headers = self.get_success_headers(serializer.data)
+        request.user.set_password(request.data['password_1'])
+        request.user.save()
+        return Response({'status': 'Password changed.'}, status=status.HTTP_200_OK, headers=headers)
