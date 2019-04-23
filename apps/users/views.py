@@ -3,7 +3,7 @@ from rest_framework import viewsets, mixins, status
 from rest_framework.decorators import api_view, action, permission_classes
 from rest_framework.exceptions import ValidationError
 from rest_framework.filters import OrderingFilter, SearchFilter
-from rest_framework.generics import GenericAPIView
+from rest_framework.generics import GenericAPIView, get_object_or_404
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from rest_framework.settings import api_settings
@@ -164,6 +164,8 @@ class UserViewSet(viewsets.ModelViewSet):
             return {}
 
     def get_object(self):
+        if self.kwargs.get('pk'):
+            return get_object_or_404(self.get_queryset(), pk=self.kwargs.get('pk'))
         return self.request.user
 
     @action(detail=True, methods=['PATCH'])
