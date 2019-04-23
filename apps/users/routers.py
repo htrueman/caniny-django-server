@@ -59,6 +59,7 @@ class UserRouter(routers.SimpleRouter):
             mapping={
                 'put': 'profile_update',
                 'patch': 'profile_update_partial',
+                'get': 'retrieve',
             },
             name='{basename}-detail',
             detail=True,

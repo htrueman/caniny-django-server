@@ -172,3 +172,8 @@ class UserViewSet(viewsets.ModelViewSet):
         if instance.is_superuser or instance.is_staff or instance.user_type == UserTypes.DJANGO_ADMIN:
             raise ValidationError({'nonFieldErrors': _('You can\'t delete this user.')})
         instance.delete()
+
+    def perform_create(self, serializer):
+        user = serializer.save()
+        user.organization = self.request.user.organization
+        user.save()
