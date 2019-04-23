@@ -50,7 +50,49 @@ class ProfileRouter(routers.SimpleRouter):
 
 profile_router = ProfileRouter()
 profile_router.register('', views.SignUpViewSet, base_name='SignUp')
-user_router = DefaultRouter()
+
+
+class UserRouter(routers.SimpleRouter):
+    routes = [
+        routers.Route(
+            url=r'^users/$',
+            mapping={'post': 'create'},
+            name='{basename}-create',
+            detail=True,
+            initkwargs={}
+        ),
+        routers.Route(
+            url=r'^users/{lookup}/$',
+            mapping={'put': 'update'},
+            name='{basename}-update',
+            detail=True,
+            initkwargs={}
+        ),
+        routers.Route(
+            url=r'^users/{lookup}/$',
+            mapping={'patch': 'partial_update'},
+            name='{basename}-partial-update',
+            detail=True,
+            initkwargs={}
+        ),
+        routers.Route(
+            url=r'^users/$',
+            mapping={'get': 'list'},
+            name='{basename}-list',
+            detail=False,
+            initkwargs={}
+        ),
+        routers.Route(
+            url=r'^users/{lookup}/$',
+            mapping={'get': 'retrieve'},
+            name='{basename}-retrieve',
+            detail=True,
+            initkwargs={}
+        ),
+    ]
+
+
+user_router = UserRouter()
 user_router.register('users', views.UserViewSet, base_name='User')
 
 urlpatterns = profile_router.urls + user_router.urls

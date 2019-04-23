@@ -135,12 +135,14 @@ class UserViewSet(mixins.RetrieveModelMixin,
         return UserSerializer
 
     def get_permissions(self):
-        if self.action in ('list', 'destroy'):
+        if self.action == 'destroy':
+            return [user_permissions.SuperAdminPermission()]
+        elif self.action in ('update', 'partial_update',):
             return [user_permissions.SuperAdminPermission()]
         return super().get_permissions()
 
     def get_queryset(self):
-        return User.objects.filter(organization=self.request.user.organization)
+        return User.objects.filter(organization=self.request.user.organization).exclude(id=self.request.user.id)
 
     def get_success_headers(self, data):
         try:
