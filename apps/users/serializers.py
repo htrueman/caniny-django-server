@@ -279,7 +279,7 @@ class PasswordResetSerializer(serializers.Serializer):
 
 
 class UserSerializer(serializers.ModelSerializer):
-    avatar = Base64ImageField(source='profile_image')
+    avatar = Base64ImageField(source='profile_image', required=False)
 
     class Meta:
         model = User
