@@ -57,8 +57,8 @@ class UserRouter(routers.SimpleRouter):
         routers.Route(
             url=r'^profile{trailing_slash}$',
             mapping={
-                'put': 'profile_update',
-                'patch': 'profile_update_partial',
+                'put': 'update',
+                'patch': 'update_partial',
                 'get': 'retrieve',
             },
             name='{basename}-detail',
@@ -68,7 +68,7 @@ class UserRouter(routers.SimpleRouter):
         routers.Route(
             url=r'^profile/change_password{trailing_slash}$',
             mapping={
-                'patch': 'profile_change_password',
+                'patch': 'change_password',
             },
             name='{basename}-detail',
             detail=True,
