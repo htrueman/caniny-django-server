@@ -30,6 +30,7 @@ urlpatterns = [
 
     path('api/<version>/', include('users.routers')),
     path('api/<version>/organizations/', include('organizations.routers')),
+    path('api/<version>/animals/', include('animals.routers')),
 ] \
     + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) \
     + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
