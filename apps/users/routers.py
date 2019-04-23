@@ -11,35 +11,35 @@ app_name = 'users'
 class ProfileRouter(routers.SimpleRouter):
     routes = [
         routers.Route(
-            url=r'^register/google/$',
+            url=r'^{prefix}/google{trailing_slash}$',
             mapping={'post': 'google'},
             name='{basename}-google',
             detail=True,
             initkwargs={}
         ),
         routers.Route(
-            url=r'^register/facebook/$',
+            url=r'^{prefix}/facebook{trailing_slash}$',
             mapping={'post': 'facebook'},
             name='{basename}-facebook',
             detail=True,
             initkwargs={}
         ),
         routers.Route(
-            url=r'^register/instagram/$',
+            url=r'^{prefix}/instagram{trailing_slash}$',
             mapping={'post': 'instagram'},
             name='{basename}-instagram',
             detail=True,
             initkwargs={}
         ),
         routers.Route(
-            url=r'^register/$',
+            url=r'^{prefix}{trailing_slash}$',
             mapping={'post': 'create'},
             name='{basename}',
             detail=True,
             initkwargs={}
         ),
         routers.Route(
-            url=r'^register/request_access/$',
+            url=r'^{prefix}/request_access{trailing_slash}$',
             mapping={'post': 'request_access'},
             name='{basename}-request-access',
             detail=True,
@@ -49,47 +49,35 @@ class ProfileRouter(routers.SimpleRouter):
 
 
 profile_router = ProfileRouter()
-profile_router.register('', views.SignUpViewSet, base_name='SignUp')
+profile_router.register('register', views.SignUpViewSet, base_name='SignUp')
 
 
 class UserRouter(routers.SimpleRouter):
-    routes = [
+    extra_routes = [
         routers.Route(
-            url=r'^users/$',
-            mapping={'post': 'create'},
-            name='{basename}-create',
+            url=r'^profile{trailing_slash}$',
+            mapping={
+                'put': 'profile_update',
+                'patch': 'profile_update_partial',
+            },
+            name='{basename}-detail',
             detail=True,
-            initkwargs={}
+            initkwargs={'suffix': 'Instance'}
         ),
         routers.Route(
-            url=r'^users/{lookup}/$',
-            mapping={'put': 'update'},
-            name='{basename}-update',
+            url=r'^profile/change_password{trailing_slash}$',
+            mapping={
+                'patch': 'profile_change_password',
+            },
+            name='{basename}-detail',
             detail=True,
-            initkwargs={}
-        ),
-        routers.Route(
-            url=r'^users/{lookup}/$',
-            mapping={'patch': 'partial_update'},
-            name='{basename}-partial-update',
-            detail=True,
-            initkwargs={}
-        ),
-        routers.Route(
-            url=r'^users/$',
-            mapping={'get': 'list'},
-            name='{basename}-list',
-            detail=False,
-            initkwargs={}
-        ),
-        routers.Route(
-            url=r'^users/{lookup}/$',
-            mapping={'get': 'retrieve'},
-            name='{basename}-retrieve',
-            detail=True,
-            initkwargs={}
+            initkwargs={'suffix': 'Instance'}
         ),
     ]
+
+    def get_routes(self, viewset):
+        routers = super().get_routes(viewset)
+        return routers + self.extra_routes
 
 
 user_router = UserRouter()

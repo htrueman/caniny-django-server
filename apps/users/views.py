@@ -1,10 +1,12 @@
 from django.contrib.auth import get_user_model
 from rest_framework import viewsets, mixins, status
 from rest_framework.decorators import api_view, action, permission_classes
+from rest_framework.exceptions import ValidationError
 from rest_framework.generics import GenericAPIView
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from rest_framework.settings import api_settings
+from django.utils.translation import gettext_lazy as _
 
 from .constants import UserTypes
 from .utils import account_activation_token
@@ -123,12 +125,7 @@ class ConfirmPasswordResetView(GenericAPIView):
             return Response({'status': 'Token link is not valid!'}, status=status.HTTP_400_BAD_REQUEST)
 
 
-class UserViewSet(mixins.RetrieveModelMixin,
-                  mixins.UpdateModelMixin,
-                  mixins.DestroyModelMixin,
-                  mixins.ListModelMixin,
-                  viewsets.GenericViewSet):
-
+class UserViewSet(viewsets.ModelViewSet):
     def get_serializer_class(self):
         if self.action == 'change_password':
             return PasswordResetSerializer
@@ -136,9 +133,7 @@ class UserViewSet(mixins.RetrieveModelMixin,
         return UserSerializer
 
     def get_permissions(self):
-        if self.action == 'destroy':
-            return [user_permissions.SuperAdminPermission()]
-        elif self.action in ('update', 'partial_update',):
+        if self.action in ('destroy', 'update', 'partial_update', 'change_password',):
             return [user_permissions.SuperAdminPermission()]
         return super().get_permissions()
 
@@ -151,6 +146,9 @@ class UserViewSet(mixins.RetrieveModelMixin,
         except (TypeError, KeyError):
             return {}
 
+    def get_object(self):
+        return self.request.user
+
     @action(detail=True, methods=['PATCH'])
     def change_password(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
@@ -159,3 +157,18 @@ class UserViewSet(mixins.RetrieveModelMixin,
         request.user.set_password(request.data['password_1'])
         request.user.save()
         return Response({'status': 'Password changed.'}, status=status.HTTP_200_OK, headers=headers)
+
+    def profile_update(self, request, *args, **kwargs):
+        return super().update(request, *args, **kwargs)
+
+    def profile_update_partial(self, request, *args, **kwargs):
+        kwargs['partial'] = True
+        return super().update(request, *args, **kwargs)
+
+    def profile_change_password(self, request, *args, **kwargs):
+        return self.change_password()
+
+    def perform_destroy(self, instance):
+        if instance.is_superuser or instance.is_staff or instance.user_type == UserTypes.DJANGO_ADMIN:
+            raise ValidationError({'nonFieldErrors': _('You can\'t delete this user.')})
+        instance.delete()
