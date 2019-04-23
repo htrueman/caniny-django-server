@@ -2,6 +2,7 @@ from django.contrib.auth import get_user_model
 from rest_framework import viewsets, mixins, status
 from rest_framework.decorators import api_view, action, permission_classes
 from rest_framework.exceptions import ValidationError
+from rest_framework.filters import OrderingFilter, SearchFilter
 from rest_framework.generics import GenericAPIView
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
@@ -126,6 +127,22 @@ class ConfirmPasswordResetView(GenericAPIView):
 
 
 class UserViewSet(viewsets.ModelViewSet):
+    filter_backends = (OrderingFilter, SearchFilter,)
+    search_fields = (
+        'first_name',
+        'last_name',
+        'phone_number',
+        'email',
+        'user_type',
+    )
+    ordering_fields = (
+        'first_name',
+        'last_name',
+        'phone_number',
+        'email',
+        'user_type',
+    )
+
     def get_serializer_class(self):
         if self.action == 'change_password':
             return PasswordResetSerializer
