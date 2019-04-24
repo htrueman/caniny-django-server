@@ -13,7 +13,7 @@ from .constants import UserTypes
 from .utils import account_activation_token
 from .serializers import UserSignUpSerializer, UserSignUpGoogleSerializer, UserSignUpFBSerializer, \
     UserSignUpIGSerializer, LoginSerializer, RequestAccessSerializer, \
-    PasswordResetSendLinkSerializer, PasswordResetSerializer, UserSerializer
+    PasswordResetSendLinkSerializer, PasswordResetSerializer, UserSerializer, SuperAdminUserSerializer
 from . import permissions as user_permissions
 
 User = get_user_model()
@@ -146,6 +146,11 @@ class UserViewSet(viewsets.ModelViewSet):
     def get_serializer_class(self):
         if self.action == 'change_password':
             return PasswordResetSerializer
+        elif self.action in ['update', 'create', 'partial_update'] and self.request.user.user_type in [
+            UserTypes.SUPER_ADMIN,
+            UserTypes.DJANGO_ADMIN
+        ]:
+            return SuperAdminUserSerializer
 
         return UserSerializer
 
@@ -155,7 +160,10 @@ class UserViewSet(viewsets.ModelViewSet):
         return super().get_permissions()
 
     def get_queryset(self):
-        return User.objects.filter(organization=self.request.user.organization).exclude(id=self.request.user.id)
+        return User.objects\
+            .filter(organization=self.request.user.organization)\
+            .exclude(id=self.request.user.id)\
+            .order_by('is_active')
 
     def get_success_headers(self, data):
         try:

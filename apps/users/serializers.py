@@ -1,5 +1,7 @@
 import requests
 from django.contrib.auth import get_user_model, authenticate
+from django.core.mail import send_mail
+from django.utils.crypto import get_random_string
 from drf_extra_fields.fields import Base64ImageField
 from rest_framework import serializers
 from rest_framework.exceptions import ValidationError
@@ -293,4 +295,44 @@ class UserSerializer(serializers.ModelSerializer):
             'description',
             'avatar',
             'user_type',
+            'is_active',
         )
+
+
+class SuperAdminUserSerializer(UserSerializer):
+    class Meta:
+        model = User
+        fields = (
+            'id',
+            'first_name',
+            'last_name',
+            'phone_number',
+            'email',
+            'address',
+            'description',
+            'avatar',
+            'user_type',
+            'is_active',
+        )
+
+    @staticmethod
+    def set_password(user):
+        user_password = get_random_string(8)
+        user.set_password(user_password)
+        send_mail(
+            'Your Caniny password',
+            'Your Caniny password is {}. Log in {}/login.'.format(user_password, settings.HOST_NAME),
+            settings.DEFAULT_FROM_EMAIL,
+            (user.email,)
+        )
+
+    def update(self, instance, validated_data):
+        if validated_data['is_active']:
+            self.set_password(instance)
+        return super().update(instance, validated_data)
+
+    def create(self, validated_data):
+        instance = super().create(validated_data)
+        if validated_data['is_active']:
+            self.set_password(instance)
+        return instance
