@@ -133,7 +133,8 @@ class User(AbstractBaseUser, PermissionsMixin):
     objects = UserManager()
 
     def __str__(self):
-        return str(self.id)
+        value = self.email if self.email else self.id
+        return '{}'.format(value)
 
     def save(self, *args, **kwargs):
         if self.is_staff and self.is_superuser:

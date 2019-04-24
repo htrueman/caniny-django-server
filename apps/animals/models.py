@@ -16,3 +16,6 @@ class Animal(models.Model):
     microchip = models.CharField(max_length=128)
 
     organization = models.ForeignKey('organizations.Organization', on_delete=models.CASCADE)
+
+    def __str__(self):
+        return '{}, {} {}'.format(self.microchip, self.name, self.species)

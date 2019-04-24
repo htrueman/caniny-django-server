@@ -10,7 +10,7 @@ class AnimalViewSet(viewsets.ModelViewSet):
 
     def get_permissions(self):
         if self.action in ('destroy', 'update', 'partial_update', 'create',):
-            return [user_permissions.AdminPermission(), user_permissions.SuperAdminPermission()]
+            return [user_permissions.AdminPermission()]
         return super().get_permissions()
 
     def get_queryset(self):
