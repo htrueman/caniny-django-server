@@ -53,8 +53,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     phone_number = PhoneNumberField(
         _('phone number'),
         null=True,
-        blank=True,
-        unique=True
+        blank=True
     )
     email = models.EmailField(
         _('email address'),
