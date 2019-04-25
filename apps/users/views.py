@@ -8,6 +8,7 @@ from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from rest_framework.settings import api_settings
 from django.utils.translation import gettext_lazy as _
+from django_filters.rest_framework import DjangoFilterBackend
 
 from .constants import UserTypes
 from .utils import account_activation_token
@@ -127,7 +128,7 @@ class ConfirmPasswordResetView(GenericAPIView):
 
 
 class UserViewSet(viewsets.ModelViewSet):
-    filter_backends = (OrderingFilter, SearchFilter,)
+    filter_backends = (OrderingFilter, SearchFilter, DjangoFilterBackend,)
     search_fields = (
         'first_name',
         'last_name',
@@ -142,6 +143,7 @@ class UserViewSet(viewsets.ModelViewSet):
         'email',
         'user_type',
     )
+    filterset_fields = ('user_type',)
 
     def get_serializer_class(self):
         if self.action == 'change_password':
