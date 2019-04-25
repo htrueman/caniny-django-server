@@ -327,7 +327,7 @@ class SuperAdminUserSerializer(UserSerializer):
         )
 
     def update(self, instance, validated_data):
-        if validated_data['is_active']:
+        if not instance.is_active and validated_data['is_active']:
             self.set_password(instance)
         return super().update(instance, validated_data)
 
