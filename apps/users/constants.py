@@ -5,7 +5,7 @@ class UserTypes:
     DJANGO_ADMIN = 'django_admin'
 
     USER_TYPES = (
-        (HELPER, 'Helper'),
+        (HELPER, 'Assistant'),
         (ADMIN, 'Admin'),
         (SUPER_ADMIN, 'Super Admin'),
         (DJANGO_ADMIN, 'Django Admin'),
