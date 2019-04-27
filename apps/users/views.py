@@ -138,6 +138,7 @@ class UserFilter(filters.FilterSet):
             'phone_number': ['iexact', 'icontains', 'istartswith', 'iendswith'],
             'email': ['iexact', 'icontains', 'istartswith', 'iendswith'],
             'user_type': ['iexact', 'icontains', 'istartswith', 'iendswith'],
+            'join_date': ['iexact', 'icontains', 'istartswith', 'iendswith', 'gte', 'lte'],
         }
 
 
@@ -153,6 +154,7 @@ class UserViewSet(viewsets.ModelViewSet):
         'phone_number',
         'email',
         'user_type',
+        'join_date',
     )
     ordering_fields = (
         'first_name',
@@ -160,6 +162,7 @@ class UserViewSet(viewsets.ModelViewSet):
         'phone_number',
         'email',
         'user_type',
+        'join_date',
     )
     filterset_class = UserFilter
     pagination_class = PagePagination
