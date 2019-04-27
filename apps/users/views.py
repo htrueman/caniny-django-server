@@ -137,7 +137,7 @@ class UserFilter(filters.FilterSet):
             'last_name': ['iexact', 'icontains', 'istartswith', 'iendswith'],
             'phone_number': ['iexact', 'icontains', 'istartswith', 'iendswith'],
             'email': ['iexact', 'icontains', 'istartswith', 'iendswith'],
-            'user_type': ['iexact', 'icontains', 'istartswith', 'iendswith'],
+            'user_type': ['iexact'],
             'join_date': ['iexact', 'icontains', 'istartswith', 'iendswith', 'gte', 'lte'],
         }
 
