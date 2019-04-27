@@ -296,6 +296,7 @@ class UserSerializer(serializers.ModelSerializer):
             'avatar',
             'user_type',
             'is_active',
+            'join_date',
         )
 
 
@@ -313,6 +314,7 @@ class SuperAdminUserSerializer(UserSerializer):
             'avatar',
             'user_type',
             'is_active',
+            'join_date',
         )
 
     @staticmethod

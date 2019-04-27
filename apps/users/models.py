@@ -120,6 +120,10 @@ class User(AbstractBaseUser, PermissionsMixin):
         default=UserTypes.HELPER,
         max_length=12
     )
+    join_date = models.DateField(
+        null=True,
+        blank=True
+    )
 
     USERNAME_FIELD = 'id'
     AUTH_FIELDS = (

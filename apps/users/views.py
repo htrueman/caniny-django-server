@@ -4,11 +4,13 @@ from rest_framework.decorators import api_view, action, permission_classes
 from rest_framework.exceptions import ValidationError
 from rest_framework.filters import OrderingFilter, SearchFilter
 from rest_framework.generics import GenericAPIView, get_object_or_404
+from rest_framework.pagination import PageNumberPagination
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from rest_framework.settings import api_settings
 from django.utils.translation import gettext_lazy as _
 from django_filters.rest_framework import DjangoFilterBackend
+from django_filters import rest_framework as filters
 
 from .constants import UserTypes
 from .utils import account_activation_token
@@ -127,6 +129,22 @@ class ConfirmPasswordResetView(GenericAPIView):
             return Response({'status': 'Token link is not valid!'}, status=status.HTTP_400_BAD_REQUEST)
 
 
+class UserFilter(filters.FilterSet):
+    class Meta:
+        model = User
+        fields = {
+            'first_name': ['iexact', 'icontains', 'istartswith', 'iendswith'],
+            'last_name': ['iexact', 'icontains', 'istartswith', 'iendswith'],
+            'phone_number': ['iexact', 'icontains', 'istartswith', 'iendswith'],
+            'email': ['iexact', 'icontains', 'istartswith', 'iendswith'],
+            'user_type': ['iexact', 'icontains', 'istartswith', 'iendswith'],
+        }
+
+
+class PagePagination(PageNumberPagination):
+    page_size_query_param = 'page_size'
+
+
 class UserViewSet(viewsets.ModelViewSet):
     filter_backends = (OrderingFilter, SearchFilter, DjangoFilterBackend,)
     search_fields = (
@@ -143,7 +161,8 @@ class UserViewSet(viewsets.ModelViewSet):
         'email',
         'user_type',
     )
-    filterset_fields = ('user_type',)
+    filterset_class = UserFilter
+    pagination_class = PagePagination
 
     def get_serializer_class(self):
         if self.action == 'change_password':
