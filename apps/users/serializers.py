@@ -299,6 +299,9 @@ class UserSerializer(serializers.ModelSerializer):
             'join_date',
         )
 
+class UserBulkDeleteSerializer(serializers.Serializer):
+    ids = serializers.ListField(child=serializers.UUIDField())
+
 
 class SuperAdminUserSerializer(UserSerializer):
     class Meta:

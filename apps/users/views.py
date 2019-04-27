@@ -16,7 +16,8 @@ from .constants import UserTypes
 from .utils import account_activation_token
 from .serializers import UserSignUpSerializer, UserSignUpGoogleSerializer, UserSignUpFBSerializer, \
     UserSignUpIGSerializer, LoginSerializer, RequestAccessSerializer, \
-    PasswordResetSendLinkSerializer, PasswordResetSerializer, UserSerializer, SuperAdminUserSerializer
+    PasswordResetSendLinkSerializer, PasswordResetSerializer, UserSerializer, SuperAdminUserSerializer, \
+    UserBulkDeleteSerializer
 from . import permissions as user_permissions
 
 User = get_user_model()
@@ -170,6 +171,8 @@ class UserViewSet(viewsets.ModelViewSet):
     def get_serializer_class(self):
         if self.action == 'change_password':
             return PasswordResetSerializer
+        elif self.action == 'bulk_delete':
+            return UserBulkDeleteSerializer
         elif self.action in ['update', 'create', 'partial_update'] and self.request.user.user_type in [
             UserTypes.SUPER_ADMIN,
             UserTypes.DJANGO_ADMIN
@@ -228,3 +231,13 @@ class UserViewSet(viewsets.ModelViewSet):
         user = serializer.save()
         user.organization = self.request.user.organization
         user.save()
+
+    @action(detail=False, methods=['POST', 'PATCH'])
+    def bulk_delete(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        headers = self.get_success_headers(serializer.data)
+        User.objects \
+            .filter(organization=self.request.user.organization, id__in=serializer.validated_data['ids']) \
+            .exclude(id=self.request.user.id).delete()
+        return Response(serializer.validated_data, status=status.HTTP_200_OK, headers=headers)
