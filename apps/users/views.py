@@ -4,7 +4,6 @@ from rest_framework.decorators import api_view, action, permission_classes
 from rest_framework.exceptions import ValidationError
 from rest_framework.filters import OrderingFilter, SearchFilter
 from rest_framework.generics import GenericAPIView, get_object_or_404
-from rest_framework.pagination import PageNumberPagination
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from rest_framework.settings import api_settings
@@ -13,6 +12,7 @@ from django_filters.rest_framework import DjangoFilterBackend
 from django_filters import rest_framework as filters
 
 from common_tools.mixins import BulkDeleteMixin
+from common_tools.pagination import PagePagination
 from common_tools.serializers import BulkDeleteSerializer
 from .constants import UserTypes
 from .utils import account_activation_token
@@ -142,10 +142,6 @@ class UserFilter(filters.FilterSet):
             'user_type': ['iexact'],
             'join_date': ['exact', 'gte', 'lte'],
         }
-
-
-class PagePagination(PageNumberPagination):
-    page_size_query_param = 'page_size'
 
 
 class UserViewSet(BulkDeleteMixin, viewsets.ModelViewSet):

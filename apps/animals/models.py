@@ -14,6 +14,11 @@ class Animal(models.Model):
     accommodation = models.CharField(max_length=256)
     tag = models.CharField(max_length=128)
     microchip = models.CharField(max_length=128)
+    photo = models.ImageField(
+        upload_to='animals/photos',
+        null=True,
+        blank=True
+    )
 
     organization = models.ForeignKey('organizations.Organization', on_delete=models.CASCADE)
 
