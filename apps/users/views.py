@@ -12,12 +12,13 @@ from django.utils.translation import gettext_lazy as _
 from django_filters.rest_framework import DjangoFilterBackend
 from django_filters import rest_framework as filters
 
+from common_tools.mixins import BulkDeleteMixin
+from common_tools.serializers import BulkDeleteSerializer
 from .constants import UserTypes
 from .utils import account_activation_token
 from .serializers import UserSignUpSerializer, UserSignUpGoogleSerializer, UserSignUpFBSerializer, \
     UserSignUpIGSerializer, LoginSerializer, RequestAccessSerializer, \
-    PasswordResetSendLinkSerializer, PasswordResetSerializer, UserSerializer, SuperAdminUserSerializer, \
-    UserBulkDeleteSerializer
+    PasswordResetSendLinkSerializer, PasswordResetSerializer, UserSerializer, SuperAdminUserSerializer
 from . import permissions as user_permissions
 
 User = get_user_model()
@@ -147,7 +148,7 @@ class PagePagination(PageNumberPagination):
     page_size_query_param = 'page_size'
 
 
-class UserViewSet(viewsets.ModelViewSet):
+class UserViewSet(BulkDeleteMixin, viewsets.ModelViewSet):
     filter_backends = (OrderingFilter, SearchFilter, DjangoFilterBackend,)
     search_fields = (
         'first_name',
@@ -172,7 +173,7 @@ class UserViewSet(viewsets.ModelViewSet):
         if self.action == 'change_password':
             return PasswordResetSerializer
         elif self.action == 'bulk_delete':
-            return UserBulkDeleteSerializer
+            return BulkDeleteSerializer
         elif self.action in ['update', 'create', 'partial_update'] and self.request.user.user_type in [
             UserTypes.SUPER_ADMIN,
             UserTypes.DJANGO_ADMIN
@@ -186,7 +187,11 @@ class UserViewSet(viewsets.ModelViewSet):
             return [user_permissions.SuperAdminPermission()]
         return super().get_permissions()
 
-    def get_queryset(self):
+    def get_queryset(self, ids=None):
+        if self.action == 'bulk_delete' and ids:
+            return User.objects\
+                .filter(organization=self.request.user.organization, id__in=ids)\
+                .exclude(id=self.request.user.id)
         return User.objects\
             .filter(organization=self.request.user.organization)\
             .exclude(id=self.request.user.id)\
@@ -231,13 +236,3 @@ class UserViewSet(viewsets.ModelViewSet):
         user = serializer.save()
         user.organization = self.request.user.organization
         user.save()
-
-    @action(detail=False, methods=['POST', 'PATCH'])
-    def bulk_delete(self, request, *args, **kwargs):
-        serializer = self.get_serializer(data=request.data)
-        serializer.is_valid(raise_exception=True)
-        headers = self.get_success_headers(serializer.data)
-        User.objects \
-            .filter(organization=self.request.user.organization, id__in=serializer.validated_data['ids']) \
-            .exclude(id=self.request.user.id).delete()
-        return Response(serializer.validated_data, status=status.HTTP_200_OK, headers=headers)
