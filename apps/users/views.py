@@ -139,7 +139,7 @@ class UserFilter(filters.FilterSet):
             'phone_number': ['iexact', 'icontains', 'istartswith', 'iendswith'],
             'email': ['iexact', 'icontains', 'istartswith', 'iendswith'],
             'user_type': ['iexact'],
-            'join_date': ['iexact', 'icontains', 'istartswith', 'iendswith', 'gte', 'lte'],
+            'join_date': ['exact', 'gte', 'lte'],
         }
 
 
@@ -182,7 +182,7 @@ class UserViewSet(viewsets.ModelViewSet):
         return UserSerializer
 
     def get_permissions(self):
-        if self.action in ('destroy', 'update', 'partial_update', 'change_password',):
+        if self.action in ('destroy', 'update', 'partial_update', 'change_password', 'bulk_delete',):
             return [user_permissions.SuperAdminPermission()]
         return super().get_permissions()
 
