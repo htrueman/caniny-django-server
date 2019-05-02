@@ -9,6 +9,9 @@ class Breed(models.Model):
     name = models.CharField(max_length=32)
     species = models.CharField(choices=constants.Species.SPECIES, max_length=5)
 
+    def __str__(self):
+        return '{} {}'.format(self.species, self.name)
+
 
 class Animal(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
@@ -20,7 +23,7 @@ class Animal(models.Model):
     species = models.CharField(choices=constants.Species.SPECIES, max_length=5)
     breed = models.OneToOneField(Breed, on_delete=models.CASCADE)
     species_details = models.TextField(blank=True, null=True)
-    origin_country = ''
+    origin_country = models.CharField(max_length=64, null=True, blank=True, choices=constants.COUNTRIES)
     pregnant = models.BooleanField(null=True, blank=True)
     personality = models.CharField(
         max_length=10,
@@ -205,7 +208,7 @@ class AnimalOwner(models.Model):
         null=True,
         blank=True
     )
-    country = ''
+    origin_country = models.CharField(max_length=64, null=True, blank=True, choices=constants.COUNTRIES)
     address = models.CharField(max_length=256, null=True, blank=True)
     comment = models.TextField(null=True, blank=True)
     profile_image = models.ImageField(
@@ -218,5 +221,3 @@ class AnimalOwner(models.Model):
         null=True,
         blank=True
     )
-
-from country_list import country_list

@@ -5,30 +5,29 @@ from rest_framework import serializers
 from django.utils.translation import gettext_lazy as _
 from rest_framework.exceptions import ValidationError
 
-from .models import Animal
+from .models import Animal, Breed, AnimalHealth, AnimalHealthVaccination, AnimalHealthMedication, AnimalAppearance, \
+    AnimalTraining, AnimalOwner
 
 
-class AnimalSerializer(serializers.ModelSerializer):
-    age = serializers.SerializerMethodField()
-    image = Base64ImageField(source='photo')
-
-    def get_age(self, obj):
-        delta = relativedelta(datetime.datetime.now(), obj.date_of_birth)
-        years_ending = 's' if delta.years > 1 else ''
-        months_ending = 's' if delta.months > 1 else ''
-        days_ending = 's' if delta.days > 1 else ''
-
-        return '{years} year{years_ending} {months} month{months_ending} {days} day{days_ending}'.format(
-            years=delta.years,
-            months=delta.months,
-            days=delta.days,
-            years_ending=years_ending,
-            months_ending=months_ending,
-            days_ending=days_ending
+class AnimalBreedSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Breed
+        fields = (
+            'name',
+            'species',
         )
 
+
+class AnimalListSerializer(serializers.ModelSerializer):
+    age = serializers.SerializerMethodField()
+    image = Base64ImageField(source='photo')
+    breed_value = AnimalBreedSerializer(source='breed')
+
+    def get_age(self, obj):
+        return obj.age if obj.age else relativedelta(datetime.datetime.now(), obj.date_of_birth).years
+
     def validate_date_of_birth(self, val):
-        if val > datetime.datetime.now():
+        if val > datetime.datetime.now().date():
             raise ValidationError(_('Date of birth can\'t be in future.'))
         return val
 
@@ -37,17 +36,206 @@ class AnimalSerializer(serializers.ModelSerializer):
         fields = (
             'id',
             'name',
-            'species',
-            'breed',
             'date_of_birth',
             'age',
-            'size',
-            'social',
+            'life_stage',
+            'gender',
+            'species',
+            'breed_value',
+            'species_details',
+            'origin_country',
+            'pregnant',
+            'personality',
+            'energy_level',
+            'cats_friendly',
+            'dogs_friendly',
+            'animals_friendly',
+            'humans_friendly',
+            'kids_friendly',
+            'bites',
+            'for_adoption',
+            'for_foster',
             'accommodation',
-            'tag',
-            'microchip',
+            'tag_number',
+            'microchip_number',
+            'joined_reason',
+            'entry_date',
+            'leave_reason',
+            'leave_date',
+            'history',
             'image',
         )
+
         write_only_fields = (
             'date_of_birth',
         )
+
+
+class AnimalHealthVaccinationSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = AnimalHealthVaccination
+        fields = (
+            'animal_health',
+            'vaccination_type',
+            'vaccination_date',
+        )
+
+
+class AnimalHealthMedicationSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = AnimalHealthMedication
+        fields = (
+            'animal_health',
+            'medication_type',
+            'medication_date',
+        )
+
+
+class AnimalHealthSerializer(serializers.ModelSerializer):
+    vaccinations = AnimalHealthVaccinationSerializer(source='animalhealthvaccination_set', many=True)
+    medications = AnimalHealthMedicationSerializer(source='animalhealthmedication_set', many=True)
+
+    class Meta:
+        model = AnimalHealth
+        fields = (
+            'height',
+            'length',
+            'weight',
+            'weight_condition',
+            'disabled',
+            'injured',
+            'cryptorchid',
+            'sterilized',
+            'sterilized_date',
+            'eyes_sight',
+            'blind',
+            'deaf',
+            'teeth',
+            'gums',
+            'describe_health',
+
+            'vaccinations',
+            'medications',
+        )
+
+
+class AnimalAppearanceSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = AnimalAppearance
+        fields = (
+            'size',
+            'first_coat_color',
+            'second_coat_color',
+            'third_coat_color',
+            'coat_marks',
+            'first_eye_color',
+            'second_eye_color',
+            'ears',
+            'tail',
+            'describe_appearance',
+        )
+
+
+class AnimalTrainingSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = AnimalTraining
+        fields = (
+            'obedience',
+            'house_trained',
+            'crate_trained',
+            'fence_required',
+            'describe_training',
+        )
+
+
+class AnimalOwnerSerializer(serializers.ModelSerializer):
+    profile_image_base = Base64ImageField(source='profile_image')
+    profile_id_image_base = Base64ImageField(source='profile_id_image')
+
+    class Meta:
+        model = AnimalOwner
+        fields = (
+            'owner_status',
+            'first_name',
+            'last_name',
+            'email',
+            'phone_number',
+            'origin_country',
+            'address',
+            'comment',
+            'profile_image_base',
+            'profile_id_image_base',
+        )
+
+
+class AnimalDetailSerializer(AnimalListSerializer):
+    health = AnimalHealthSerializer(source='animalhealth')
+    appearance = AnimalAppearanceSerializer(source='animalappearance')
+    training = AnimalTrainingSerializer(source='animaltraining')
+    owners = AnimalOwnerSerializer(source='animalowner_set', many=True)
+
+    class Meta:
+        model = Animal
+        fields = (
+            'id',
+            'name',
+            'date_of_birth',
+            'age',
+            'life_stage',
+            'gender',
+            'species',
+            'breed_value',
+            'species_details',
+            'origin_country',
+            'pregnant',
+            'personality',
+            'energy_level',
+            'cats_friendly',
+            'dogs_friendly',
+            'animals_friendly',
+            'humans_friendly',
+            'kids_friendly',
+            'bites',
+            'for_adoption',
+            'for_foster',
+            'accommodation',
+            'tag_number',
+            'microchip_number',
+            'joined_reason',
+            'entry_date',
+            'leave_reason',
+            'leave_date',
+            'history',
+            'image',
+
+            'health',
+            'appearance',
+            'training',
+            'owners',
+        )
+
+        write_only_fields = (
+            'date_of_birth',
+        )
+
+    def create(self, validated_data):
+        animalhealth = validated_data.pop('animalhealth')
+        animalhealthvaccination_set = animalhealth.pop('animalhealthvaccination_set')
+        animalhealthmedication_set = animalhealth.pop('animalhealthmedication_set')
+        animalappearance = validated_data.pop('animalappearance')
+        animaltraining = validated_data.pop('animaltraining')
+        animalowner_set = validated_data.pop('animalowner_set')
+
+        animal = Animal.objects.create(**validated_data)
+
+        health = AnimalHealth.objects.create(animal=animal, **animalhealth)
+        for animalhealthvaccination in animalhealthvaccination_set:
+            AnimalHealthVaccination.objects.create(health=health, **animalhealthvaccination)
+        for animalhealthmedication in animalhealthmedication_set:
+            AnimalHealthMedication.objects.create(health=health, **animalhealthmedication)
+
+        AnimalAppearance.objects.create(animal=animal, **animalappearance)
+        AnimalTraining.objects.create(animal=animal, **animaltraining)
+        for animalowner in animalowner_set:
+            AnimalOwner.objects.create(animal=animal, **animalowner)
+        return super().create(validated_data)
