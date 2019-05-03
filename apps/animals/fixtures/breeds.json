@@ -1,0 +1,4328 @@
+[
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Affenpinscher",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Afghan Hound",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Afghan Shepherd",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Aidi",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Airedale Terrier",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Akbash",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Akita",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Alano Español",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Alaskan husky",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Alaskan Klee Kai",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Alaskan Malamute",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Alaunt",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Alopekis",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Alpine Dachsbracke",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Alpine Mastiff",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Alpine Spaniel",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "American Akita",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "American Bulldog",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "American Cocker Spaniel",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "American English Coonhound",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "American Eskimo Dog",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "American Foxhound",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "American Hairless Terrier",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "American Pit Bull Terrier",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "American Staffordshire Terrier",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "American Water Spaniel",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Anatolian Shepherd Dog",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Andalusian Hound",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Anglo-Français de Petite Vénerie",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Appenzeller Sennenhund",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Braque de l'Ariege",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Ariegeois",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Armant",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Armenian Gampr dog",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Artois Hound",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Australian Cattle Dog",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Australian Kelpie",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Australian Shepherd",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Australian Silky Terrier",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Australian Stumpy Tail Cattle Dog",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Australian Terrier",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Austrian Black and Tan Hound",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Austrian Pinscher",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Azawakh",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Bakharwal dog",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Barbet",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Basenji",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Basque Shepherd Dog",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Basset Artésien Normand",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Basset Bleu de Gascogne",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Basset Fauve de Bretagne",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Grand Basset Griffon Vendéen",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Petit Basset Griffon Vendéen",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Basset Hound",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Bavarian Mountain Hound",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Beagle",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Beagle-Harrier",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Bearded Collie",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Beauceron",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Bedlington Terrier",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Belgian Shepherd Dog (Groenendael)",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Belgian Shepherd Dog (Laekenois)",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Belgian Shepherd Dog (Malinois)",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Belgian Shepherd Dog (Tervuren)",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Bergamasco Shepherd",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Berger Blanc Suisse",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Berger Picard",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Bernese Mountain Dog",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Bichon Frisé",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Billy",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Black and Tan Coonhound",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Black and Tan Virginia Foxhound",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Black Norwegian Elkhound",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Black Russian Terrier",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Black Mouth Cur",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Grand Bleu de Gascogne",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Petit Bleu de Gascogne",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Bloodhound",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Blue Heeler",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Blue Lacy",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Blue Paul Terrier",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Blue Picardy Spaniel",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Bluetick Coonhound",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Boerboel",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Bohemian Shepherd",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Bolognese",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Border Collie",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Border Terrier",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Borzoi",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Bosnian Coarse-haired Hound",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Boston Terrier",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Bouvier des Ardennes",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Bouvier des Flandres",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Boxer",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Boykin Spaniel",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Bracco Italiano",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Braque d'Auvergne",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Braque du Bourbonnais",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Braque du Puy",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Braque Francais",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Braque Saint-Germain",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Brazilian Dogo",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Brazilian Terrier",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Briard",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Briquet Griffon Vendéen",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Brittany",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Broholmer",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Bruno Jura Hound",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Bucovina Shepherd Dog",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Bull and Terrier",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Bull Terrier",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Bulldog",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Bullenbeisser",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Bullmastiff",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Bully Kutta",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Burgos Pointer",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Cairn Terrier",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Canaan Dog",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Canadian Eskimo Dog",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Cane Corso",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Cantabrian Water Dog",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Cão da Serra de Aires",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Cão de Castro Laboreiro",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Cão de Gado Transmontano",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Cão Fila de São Miguel",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Carolina Dog",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Carpathian Shepherd Dog",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Catahoula Leopard Dog",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Catalan Sheepdog",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Caucasian Shepherd Dog",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Cavalier King Charles Spaniel",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Central Asian Shepherd Dog",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Cesky Fousek",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Cesky Terrier",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Chesapeake Bay Retriever",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Chien Français Blanc et Noir",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Chien Français Blanc et Orange",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Chien Français Tricolore",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Chien-gris",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Chihuahua",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Chilean Fox Terrier",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Chinese Chongqing Dog",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Chinese Crested Dog",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Chinese Imperial Dog",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Chinook",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Chippiparai",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Chow Chow",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Cierny Sery",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Cirneco dell'Etna",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Clumber Spaniel",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Collie, Rough",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Collie, Smooth",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Combai",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Cordoba Fighting Dog",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Coton de Tulear",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Cretan Hound",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Croatian Sheepdog",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Cumberland Sheepdog",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Curly-Coated Retriever",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Cursinu",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Czechoslovakian Wolfdog",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Dachshund",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Dalmatian",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Dandie Dinmont Terrier",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Danish-Swedish Farmdog",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Deutsche Bracke",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Doberman Pinscher",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Dogo Argentino",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Dogo Cubano",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Dogue de Bordeaux",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Drentse Patrijshond",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Drever",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Dunker",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Dutch Shepherd",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Dutch Smoushond",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "East Siberian Laika",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "East European Shepherd",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Elo",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "English Cocker Spaniel",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "English Foxhound",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Mastiff",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "English Setter",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "English Shepherd",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "English Springer Spaniel",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "English Toy Terrier (Black & Tan)",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "English Water Spaniel",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "English White Terrier",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Entlebucher Mountain Dog",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Estonian Hound",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Estrela Mountain Dog",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Eurasier",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Eurohound",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Field Spaniel",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Fila Brasileiro",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Finnish Hound",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Finnish Lapphund",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Finnish Spitz",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Flat-Coated Retriever",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Fox Terrier, Smooth",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Fox Terrier, Wire",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "French Brittany",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "French Bulldog",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "French Spaniel",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Gaddi Dog",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Galgo Español",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Galician Cattle Dog",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Garafian Shepherd",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Gascon Saintongeois",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Georgian Shepherd Dog",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "German Longhaired Pointer",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "German Pinscher",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "German Roughhaired Pointer",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "German Shepherd Dog",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "German Shorthaired Pointer",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "German Spaniel",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "German Spitz",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "German Wirehaired Pointer",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Giant Schnauzer",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Glen of Imaal Terrier",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Golden Retriever",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Gordon Setter",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Gran Mastín de Borínquen",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Grand Anglo-Français Blanc et Noir",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Grand Anglo-Français Blanc et Orange",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Grand Anglo-Français Tricolore",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Grand Griffon Vendéen",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Great Dane",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Great Pyrenees",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Greater Swiss Mountain Dog",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Greek Harehound",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Greenland Dog",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Greyhound",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Griffon Bleu de Gascogne",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Griffon Bruxellois",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Griffon Fauve de Bretagne",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Griffon Nivernais",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Guatemalan Dogo",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Hamiltonstövare",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Hanover Hound",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Hare Indian Dog",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Harrier",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Havanese",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Hawaiian Poi Dog",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Himalayan Sheepdog",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Hokkaido",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Hortaya Borzaya",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Hovawart",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Huntaway",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Hygenhund",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Ibizan Hound",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Icelandic Sheepdog",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Indian pariah dog",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Indian Spitz",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Irish Red and White Setter",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Irish Setter",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Irish Terrier",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Irish Water Spaniel",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Irish Wolfhound",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Istrian Coarse-haired Hound",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Istrian Shorthaired Hound",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Italian Greyhound",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Jack Russell Terrier",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Jagdterrier",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Jämthund",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Japanese Chin",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Japanese Spitz",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Japanese Terrier",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Kaikadi",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Kai Ken",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Kangal Dog",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Kanni",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Karakachan Dog",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Karelian Bear Dog",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Karst Shepherd",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Keeshond",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Kerry Beagle",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Kerry Blue Terrier",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "King Charles Spaniel",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "King Shepherd",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Kintamani",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Kishu Ken",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Komondor",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Kooikerhondje",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Koolie",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Korean Jindo",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Kromfohrländer",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Kumaon Mastiff",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Kunming Wolfdog",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Kurī",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Kuvasz",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Kyi-Leo",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Labrador Husky",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Labrador Retriever",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Lagotto Romagnolo",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Lakeland Terrier",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Lancashire Heeler",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Landseer",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Lapponian Herder",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Leonberger",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Lhasa Apso",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Lithuanian Hound",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Löwchen",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Mackenzie River Husky",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Magyar Agár",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Mahratta Greyhound",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Majorca Ratter",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Majorca Shepherd Dog",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Maltese",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Manchester Terrier",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Maremma Sheepdog",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "McNab",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Mexican Hairless Dog",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Miniature Australian Shepherd",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Miniature American Shepherd",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Miniature Bull Terrier",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Miniature Fox Terrier",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Miniature Pinscher",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Miniature Schnauzer",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Miniature Shar Pei",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Romanian Mioritic Shepherd Dog",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Mixed",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Molossus",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Molossus of Epirus",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Montenegrin Mountain Hound",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Moscow Watchdog",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Moscow Water Dog",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Mountain Cur",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Mucuchies",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Mudhol Hound",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Mudi",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Münsterländer, Large",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Münsterländer, Small",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Neapolitan Mastiff",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Newfoundland",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "New Zealand Heading Dog",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Norfolk Spaniel",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Norfolk Terrier",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Norrbottenspets",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "North Country Beagle",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Northern Inuit Dog",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Norwegian Buhund",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Norwegian Elkhound",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Norwegian Lundehund",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Norwich Terrier",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Nova Scotia Duck Tolling Retriever",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Old Croatian Sighthound",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Old Danish Pointer",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Old English Bulldog",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Old English Sheepdog",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Old English Terrier",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Old German Shepherd Dog",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Old Time Farm Shepherd",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Olde English Bulldogge",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Otterhound",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Pachon Navarro",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Pandikona Hunting Dog",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Paisley Terrier",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Papillon",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Parson Russell Terrier",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Patterdale Terrier",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Pekingese",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Perro de Presa Canario",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Perro de Presa Mallorquin",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Peruvian Hairless Dog",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Phalène",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Pharaoh Hound",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Phu Quoc Ridgeback",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Picardy Spaniel",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Plummer Terrier",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Plott Hound",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Podenco Canario",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Pointer",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Poitevin",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Polish Greyhound",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Polish Hound",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Polish Hunting Dog",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Polish Lowland Sheepdog",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Polish Tatra Sheepdog",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Pomeranian",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Pont-Audemer Spaniel",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Poodle",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Porcelaine",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Portuguese Podengo",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Portuguese Pointer",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Portuguese Water Dog",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Posavac Hound",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Pražský Krysařík",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Pudelpointer",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Pug",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Puli",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Pumi",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Pungsan Dog",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Pyrenean Mastiff",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Pyrenean Shepherd",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Rafeiro do Alentejo",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Rajapalayam",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Rampur Greyhound",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Rastreador Brasileiro",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Ratonero Bodeguero Andaluz",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Ratonero Murciano de Huerta",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Ratonero Valenciano",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Rat Terrier",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Redbone Coonhound",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Rhodesian Ridgeback",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Rottweiler",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Russian Spaniel",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Russian Toy",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Russian Tracker",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Russo-European Laika",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Russell Terrier",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Saarloos Wolfdog",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Sabueso Español",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Sabueso fino Colombiano",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Saint-Usuge Spaniel",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Sakhalin Husky",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Saluki",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Samoyed",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Sapsali",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Šarplaninac",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Schapendoes",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Schillerstövare",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Schipperke",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Schweizer Laufhund",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Schweizerischer Niederlaufhund",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Scotch Collie",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Scottish Deerhound",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Scottish Terrier",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Sealyham Terrier",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Segugio Italiano",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Seppala Siberian Sleddog",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Serbian Hound",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Serbian Tricolour Hound",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Seskar Seal Dog",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Shar Pei",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Shetland Sheepdog",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Shiba Inu",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Shih Tzu",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Shikoku",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Shiloh Shepherd",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Siberian Husky",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Silken Windhound",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Sinhala Hound",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Skye Terrier",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Sloughi",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Slovak Cuvac",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Slovakian Wirehaired Pointer",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Slovenský Kopov",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Smålandsstövare",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Small Greek Domestic Dog",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Soft-Coated Wheaten Terrier",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "South Russian Ovcharka",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Southern Hound",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Spanish Mastiff",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Spanish Water Dog",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Spinone Italiano",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Sporting Lucas Terrier",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "St. Bernard",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "St. John's water dog",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Stabyhoun",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Staffordshire Bull Terrier",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Standard Schnauzer",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Stephens Cur",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Styrian Coarse-haired Hound",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Sussex Spaniel",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Swedish Lapphund",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Swedish Vallhund",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Tahltan Bear Dog",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Taigan",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Taiwan Dog",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Talbot",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Tamaskan Dog",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Teddy Roosevelt Terrier",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Telomian",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Tenterfield Terrier",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Terceira Mastiff",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Thai Bangkaew Dog",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Thai Ridgeback",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Tibetan Mastiff",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Tibetan Spaniel",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Tibetan Terrier",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Tornjak",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Tosa",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Toy Bulldog",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Toy Fox Terrier",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Toy Manchester Terrier",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Toy Trawler Spaniel",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Transylvanian Hound",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Treeing Cur",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Treeing Tennessee Brindle",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Treeing Walker Coonhound",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Trigg Hound",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Tweed Water Spaniel",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Tyrolean Hound",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Cimarrón Uruguayo",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Valencian Ratter",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Vanjari Hound",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Villano de Las Encartaciones",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Villanuco de Las Encartaciones",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Vizsla",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Volpino Italiano",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Weimaraner",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Welsh Corgi, Cardigan",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Welsh Corgi, Pembroke",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Welsh Sheepdog",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Welsh Springer Spaniel",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Welsh Terrier",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "West Highland White Terrier",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "West Siberian Laika",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Westphalian Dachsbracke",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Wetterhoun",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Whippet",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "White Shepherd",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Wirehaired Pointing Griffon",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Wirehaired Vizsla",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Xiasi Dog",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Yorkshire Terrier",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Other",
+      "species": "dog"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Abyssinian",
+      "species": "cat"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Aegean",
+      "species": "cat"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "American Curl",
+      "species": "cat"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "American Bobtail",
+      "species": "cat"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "American Shorthair",
+      "species": "cat"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "American Wirehair",
+      "species": "cat"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Aphrodite Giant",
+      "species": "cat"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Arabian Mau",
+      "species": "cat"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Australian Mist",
+      "species": "cat"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Asian",
+      "species": "cat"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Asian Semi-longhair",
+      "species": "cat"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Balinese",
+      "species": "cat"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Bambino",
+      "species": "cat"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Bengal",
+      "species": "cat"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Birman",
+      "species": "cat"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Bombay",
+      "species": "cat"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Brazilian Shorthair",
+      "species": "cat"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "British Semi-longhair",
+      "species": "cat"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "British Shorthair",
+      "species": "cat"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "British Longhair",
+      "species": "cat"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Burmese",
+      "species": "cat"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Burmilla",
+      "species": "cat"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "California Spangled",
+      "species": "cat"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Chantilly-Tiffany",
+      "species": "cat"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Chartreux",
+      "species": "cat"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Chausie",
+      "species": "cat"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Cheetoh",
+      "species": "cat"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Colorpoint Shorthair",
+      "species": "cat"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Cornish Rex",
+      "species": "cat"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Cymric (Manx Longhair, Longhaired Manx)",
+      "species": "cat"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Cyprus",
+      "species": "cat"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Devon Rex",
+      "species": "cat"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Donskoy (Don Sphynx)",
+      "species": "cat"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Dragon Li",
+      "species": "cat"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Dwelf",
+      "species": "cat"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Egyptian Mau",
+      "species": "cat"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "European Shorthair",
+      "species": "cat"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Exotic Shorthair",
+      "species": "cat"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Foldex",
+      "species": "cat"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "German Rex",
+      "species": "cat"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Havana Brown",
+      "species": "cat"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Highlander",
+      "species": "cat"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Himalayan (Colorpoint Persian)",
+      "species": "cat"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Japanese Bobtail",
+      "species": "cat"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Javanese (Colorpoint Longhair)",
+      "species": "cat"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Karelian Bobtail",
+      "species": "cat"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Khao Manee",
+      "species": "cat"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Korat",
+      "species": "cat"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Korean Bobtail",
+      "species": "cat"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Korn Ja",
+      "species": "cat"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Kurilian Bobtail (Kuril Islands Bobtail)",
+      "species": "cat"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "LaPerm",
+      "species": "cat"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Lykoi",
+      "species": "cat"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Maine Coon",
+      "species": "cat"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Manx",
+      "species": "cat"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Mekong Bobtail",
+      "species": "cat"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Minskin",
+      "species": "cat"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Mixed",
+      "species": "cat"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Munchkin",
+      "species": "cat"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Nebelung",
+      "species": "cat"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Napoleon",
+      "species": "cat"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Norwegian Forest cat",
+      "species": "cat"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Ocicat",
+      "species": "cat"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Ojos Azules",
+      "species": "cat"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Oregon Rex",
+      "species": "cat"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Oriental Bicolor",
+      "species": "cat"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Oriental Shorthair",
+      "species": "cat"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Oriental Longhair (Foreign Longhair, Mandarin)",
+      "species": "cat"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Persian (modern)",
+      "species": "cat"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Persian (traditional)",
+      "species": "cat"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Peterbald",
+      "species": "cat"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Pixie-bob",
+      "species": "cat"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Raas",
+      "species": "cat"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Ragamuffin",
+      "species": "cat"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Ragdoll",
+      "species": "cat"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Russian Blue",
+      "species": "cat"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Russian White, Black, and Tabby",
+      "species": "cat"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Sam Sawet",
+      "species": "cat"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Savannah",
+      "species": "cat"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Scottish Fold",
+      "species": "cat"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Selkirk Rex",
+      "species": "cat"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Serengeti",
+      "species": "cat"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Serrade petit",
+      "species": "cat"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Siamese (modern)",
+      "species": "cat"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Siberian (Siberian Forest Cat, Neva Masquerade)",
+      "species": "cat"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Singapura",
+      "species": "cat"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Snowshoe",
+      "species": "cat"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Sokoke",
+      "species": "cat"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Somali",
+      "species": "cat"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Sphynx",
+      "species": "cat"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Suphalak",
+      "species": "cat"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Thai",
+      "species": "cat"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Thai Lilac",
+      "species": "cat"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Tonkinese",
+      "species": "cat"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Toyger",
+      "species": "cat"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Turkish Angora",
+      "species": "cat"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Turkish Van",
+      "species": "cat"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Ukrainian Levkoy",
+      "species": "cat"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Wila Krungthep",
+      "species": "cat"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "York Chocolate",
+      "species": "cat"
+   }
+},
+{
+   "model": "animals.breed",
+   "fields": {
+      "name": "Other",
+      "species": "cat"
+   }
+}
+]

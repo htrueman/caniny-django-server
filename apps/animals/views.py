@@ -1,10 +1,12 @@
 import datetime
+from copy import deepcopy
 
 from dateutil.relativedelta import relativedelta
 from django.db.models import Q
 from django_filters.rest_framework import DjangoFilterBackend
-from rest_framework import viewsets
+from rest_framework import viewsets, status
 from django_filters import rest_framework as filters
+from rest_framework.response import Response
 
 from common_tools.mixins import BulkDeleteMixin
 from common_tools.pagination import PagePagination
@@ -70,9 +72,10 @@ class AnimalViewSet(BulkDeleteMixin, viewsets.ModelViewSet):
     filter_backends = (DjangoFilterBackend,)
     filterset_class = AnimalFilter
     pagination_class = PagePagination
+    http_method_names = ('get', 'post', 'put', 'delete', 'head', 'options',)
 
     def get_permissions(self):
-        if self.action in ('destroy', 'update', 'partial_update', 'create', 'bulk_delete',):
+        if self.action in ('destroy', 'update', 'create', 'bulk_delete',):
             return [user_permissions.AdminPermission()]
         return super().get_permissions()
 
@@ -94,4 +97,20 @@ class AnimalViewSet(BulkDeleteMixin, viewsets.ModelViewSet):
         serializer.save(organization=self.request.user.organization)
 
     def perform_update(self, serializer):
-        serializer.save(organization=self.request.user.organization)
+        return serializer.save(organization=self.request.user.organization)
+
+    def update(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+
+        instance = self.get_object()
+        old_id = deepcopy(instance.id)
+        instance.delete()
+        new_instance = self.perform_update(serializer)
+        new_instance_id = deepcopy(new_instance.id)
+        new_instance.id = old_id
+        new_instance.save()
+        Animal.objects.filter(id=new_instance_id).delete()
+
+        headers = self.get_success_headers(serializer.data)
+        return Response(serializer.data, status=status.HTTP_200_OK, headers=headers)

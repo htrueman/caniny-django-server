@@ -1,4 +1,6 @@
 import datetime
+from copy import deepcopy
+
 from dateutil.relativedelta import relativedelta
 from drf_extra_fields.fields import Base64ImageField
 from rest_framework import serializers
@@ -235,4 +237,4 @@ class AnimalDetailSerializer(AnimalListSerializer):
         AnimalTraining.objects.create(animal=animal, **animaltraining)
         for animalowner in animalowner_set:
             AnimalOwner.objects.create(animal=animal, **animalowner)
-        return super().create(validated_data)
+        return animal
