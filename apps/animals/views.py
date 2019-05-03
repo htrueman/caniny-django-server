@@ -6,14 +6,15 @@ from django.db.models import Q
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import viewsets, status
 from django_filters import rest_framework as filters
+from rest_framework.generics import ListAPIView
 from rest_framework.response import Response
 
 from common_tools.mixins import BulkDeleteMixin
 from common_tools.pagination import PagePagination
 from common_tools.serializers import BulkDeleteSerializer
-from .models import Animal
+from .models import Animal, Breed
 from users import permissions as user_permissions
-from .serializers import AnimalListSerializer, AnimalDetailSerializer
+from .serializers import AnimalListSerializer, AnimalDetailSerializer, AnimalBreedSerializer
 
 
 class AnimalFilter(filters.FilterSet):
@@ -114,3 +115,8 @@ class AnimalViewSet(BulkDeleteMixin, viewsets.ModelViewSet):
 
         headers = self.get_success_headers(serializer.data)
         return Response(serializer.data, status=status.HTTP_200_OK, headers=headers)
+
+
+class BreedListView(ListAPIView):
+    queryset = Breed.objects.all()
+    serializer_class = AnimalBreedSerializer

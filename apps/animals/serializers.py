@@ -1,6 +1,4 @@
 import datetime
-from copy import deepcopy
-
 from dateutil.relativedelta import relativedelta
 from drf_extra_fields.fields import Base64ImageField
 from rest_framework import serializers
@@ -15,6 +13,7 @@ class AnimalBreedSerializer(serializers.ModelSerializer):
     class Meta:
         model = Breed
         fields = (
+            'id',
             'name',
             'species',
         )
