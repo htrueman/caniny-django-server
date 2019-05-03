@@ -21,7 +21,7 @@ class Animal(models.Model):
     life_stage = models.CharField(choices=constants.LifeStages.LIFE_STAGES, null=True, blank=True, max_length=6)
     gender = models.CharField(choices=constants.Genders.GENDERS, max_length=6)
     species = models.CharField(choices=constants.Species.SPECIES, max_length=5)
-    breed = models.OneToOneField(Breed, on_delete=models.CASCADE)
+    breed = models.ForeignKey(Breed, on_delete=models.CASCADE)
     species_details = models.TextField(blank=True, null=True)
     origin_country = models.CharField(max_length=64, null=True, blank=True, choices=constants.COUNTRIES)
     pregnant = models.BooleanField(null=True, blank=True)

@@ -20,8 +20,7 @@ class AnimalBreedSerializer(serializers.ModelSerializer):
 
 class AnimalListSerializer(serializers.ModelSerializer):
     age = serializers.SerializerMethodField()
-    image = Base64ImageField(source='photo')
-    breed_value = AnimalBreedSerializer(source='breed')
+    image = Base64ImageField(source='photo', required=False)
 
     def get_age(self, obj):
         return obj.age if obj.age else relativedelta(datetime.datetime.now(), obj.date_of_birth).years
@@ -41,7 +40,7 @@ class AnimalListSerializer(serializers.ModelSerializer):
             'life_stage',
             'gender',
             'species',
-            'breed_value',
+            'breed',
             'species_details',
             'origin_country',
             'pregnant',
@@ -66,16 +65,15 @@ class AnimalListSerializer(serializers.ModelSerializer):
             'image',
         )
 
-        write_only_fields = (
-            'date_of_birth',
-        )
+        extra_kwargs = {
+            'date_of_birth': {'write_only': True},
+        }
 
 
 class AnimalHealthVaccinationSerializer(serializers.ModelSerializer):
     class Meta:
         model = AnimalHealthVaccination
         fields = (
-            'animal_health',
             'vaccination_type',
             'vaccination_date',
         )
@@ -85,7 +83,6 @@ class AnimalHealthMedicationSerializer(serializers.ModelSerializer):
     class Meta:
         model = AnimalHealthMedication
         fields = (
-            'animal_health',
             'medication_type',
             'medication_date',
         )
@@ -149,8 +146,8 @@ class AnimalTrainingSerializer(serializers.ModelSerializer):
 
 
 class AnimalOwnerSerializer(serializers.ModelSerializer):
-    profile_image_base = Base64ImageField(source='profile_image')
-    profile_id_image_base = Base64ImageField(source='profile_id_image')
+    profile_image_base = Base64ImageField(source='profile_image', required=False)
+    profile_id_image_base = Base64ImageField(source='profile_id_image', required=False)
 
     class Meta:
         model = AnimalOwner
@@ -184,7 +181,7 @@ class AnimalDetailSerializer(AnimalListSerializer):
             'life_stage',
             'gender',
             'species',
-            'breed_value',
+            'breed',
             'species_details',
             'origin_country',
             'pregnant',
@@ -214,9 +211,9 @@ class AnimalDetailSerializer(AnimalListSerializer):
             'owners',
         )
 
-        write_only_fields = (
-            'date_of_birth',
-        )
+        extra_kwargs = {
+            'date_of_birth': {'write_only': True},
+        }
 
     def create(self, validated_data):
         animalhealth = validated_data.pop('animalhealth')
@@ -230,9 +227,9 @@ class AnimalDetailSerializer(AnimalListSerializer):
 
         health = AnimalHealth.objects.create(animal=animal, **animalhealth)
         for animalhealthvaccination in animalhealthvaccination_set:
-            AnimalHealthVaccination.objects.create(health=health, **animalhealthvaccination)
+            AnimalHealthVaccination.objects.create(animal_health=health, **animalhealthvaccination)
         for animalhealthmedication in animalhealthmedication_set:
-            AnimalHealthMedication.objects.create(health=health, **animalhealthmedication)
+            AnimalHealthMedication.objects.create(animal_health=health, **animalhealthmedication)
 
         AnimalAppearance.objects.create(animal=animal, **animalappearance)
         AnimalTraining.objects.create(animal=animal, **animaltraining)
