@@ -117,6 +117,16 @@ class AnimalViewSet(BulkDeleteMixin, viewsets.ModelViewSet):
         return Response(serializer.data, status=status.HTTP_200_OK, headers=headers)
 
 
+class BreedFilter(filters.FilterSet):
+    class Meta:
+        model = Breed
+        fields = (
+            'species',
+        )
+
+
 class BreedListView(ListAPIView):
     queryset = Breed.objects.all()
     serializer_class = AnimalBreedSerializer
+    filter_backends = (DjangoFilterBackend,)
+    filterset_class = BreedFilter
