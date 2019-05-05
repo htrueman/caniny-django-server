@@ -31,13 +31,6 @@ class AnimalListSerializer(serializers.ModelSerializer):
             raise ValidationError(_('Date of birth can\'t be in future.'))
         return val
 
-    def validate(self, data):
-        if data.get('age') and data.get('date_of_birth'):
-            raise serializers.ValidationError([_("Set only age or date of birth.")])
-        elif not (data.get('age') or data.get('date_of_birth')):
-            raise serializers.ValidationError([_("Set either age or date of birth.")])
-        return data
-
     class Meta:
         model = Animal
         fields = (
@@ -222,6 +215,13 @@ class AnimalDetailSerializer(AnimalListSerializer):
         extra_kwargs = {
             'date_of_birth': {'write_only': True},
         }
+
+    def validate(self, data):
+        if data.get('age') and data.get('date_of_birth'):
+            raise serializers.ValidationError([_("Set only age or date of birth.")])
+        elif not (data.get('age') or data.get('date_of_birth')):
+            raise serializers.ValidationError([_("Set either age or date of birth.")])
+        return data
 
     def create(self, validated_data):
         animalhealth = validated_data.pop('animalhealth', {})
