@@ -78,12 +78,14 @@ class CatsFriendlyChoices:
     NO = 'no'
     ONLY_FEMALES = 'only_females'
     ONLY_MALES = 'only_males'
+    UNKNOWN = 'unknown'
 
     CATS_FRIENDLY_CHOICES = (
         (YES, _('Yes')),
         (NO, _('No')),
         (ONLY_FEMALES, _('Only Females')),
         (ONLY_MALES, _('Only Males')),
+        (UNKNOWN, _('Unknown')),
     )
 
 
@@ -92,12 +94,14 @@ class DogsFriendlyChoices:
     NO = 'no'
     ONLY_FEMALES = 'only_females'
     ONLY_MALES = 'only_males'
+    UNKNOWN = 'unknown'
 
     DOGS_FRIENDLY_CHOICES = (
         (YES, _('Yes')),
         (NO, _('No')),
         (ONLY_FEMALES, _('Only Females')),
         (ONLY_MALES, _('Only Males')),
+        (UNKNOWN, _('Unknown')),
     )
 
 
@@ -106,12 +110,14 @@ class AnimalsFriendlyChoices:
     NO = 'no'
     ONLY_SMALL_ANIMALS = 'only_small_animals'
     ONLY_BIG_ANIMALS = 'only_big_animals'
+    UNKNOWN = 'unknown'
 
     ANIMALS_FRIENDLY_CHOICES = (
         (YES, _('Yes')),
         (NO, _('No')),
         (ONLY_SMALL_ANIMALS, _('Only Small Animals')),
         (ONLY_BIG_ANIMALS, _('Only Big Animals')),
+        (UNKNOWN, _('Unknown')),
     )
 
 
@@ -120,12 +126,14 @@ class HumansFriendlyChoices:
     NO = 'no'
     ONLY_FEMALES = 'only_females'
     ONLY_MALES = 'only_males'
+    UNKNOWN = 'unknown'
 
     HUMANS_FRIENDLY_CHOICES = (
         (YES, _('Yes')),
         (NO, _('No')),
         (ONLY_FEMALES, _('Only Females')),
         (ONLY_MALES, _('Only Males')),
+        (UNKNOWN, _('Unknown')),
     )
 
 
@@ -137,6 +145,7 @@ class KidsFriendlyChoices:
     ONLY_YOUNG_KIDS = 'only_young_kids'
     ONLY_OLD_KIDS = 'only_old_kids'
     BOTH_YOUNG_AND_OLD = 'both_young_and_old'
+    UNKNOWN = 'unknown'
 
     KIDS_FRIENDLY_CHOICES = (
         (YES, _('Yes')),
@@ -146,6 +155,7 @@ class KidsFriendlyChoices:
         (ONLY_MALES, _('Only young kids')),
         (ONLY_MALES, _('Only old kids')),
         (ONLY_MALES, _('Both young & old')),
+        (UNKNOWN, _('Unknown')),
     )
 
 
@@ -174,17 +184,20 @@ class AdoptionChoices:
 class FosterChoices:
     YES = 'yes'
     NO = 'no'
+    TO_BE = 'to_be'
     HOLD = 'hold'
 
     FOSTER_CHOICES = (
         (YES, _('Yes')),
         (NO, _('No')),
+        (TO_BE, _('To be')),
         (HOLD, _('Hold')),
     )
 
 
 class Accommodations:
     APARTMENT = 'apartment'
+    TOWNHOUSE = 'townhouse'
     HOUSE = 'house'
     VILLA = 'villa'
     FARM = 'farm'
@@ -192,6 +205,7 @@ class Accommodations:
 
     ACCOMMODATIONS = (
         (APARTMENT, _('Apartment')),
+        (TOWNHOUSE, _('Townhouse')),
         (HOUSE, _('House')),
         (VILLA, _('Villa')),
         (FARM, _('Farm')),
@@ -381,6 +395,20 @@ class CoatMarks:
     )
 
 
+class CoatTypes:
+    SHORT = 'short'
+    MEDIUM = 'medium'
+    LONG = 'long'
+    HAIRLESS = 'hairless'
+
+    COAT_TYPES = (
+        (SHORT, _('Short')),
+        (MEDIUM, _('Medium')),
+        (LONG, _('Long')),
+        (HAIRLESS, _('Hairless')),
+    )
+
+
 class EyeColors:
     BLACK = 'black'
     GREY = 'grey'
@@ -445,6 +473,7 @@ class OwnerChoices:
     FOSTER = 'foster'
     ADOPTER = 'adopter'
     NO_OWNER = 'no_owner'
+    OTHER = 'other'
 
     OWNER_CHOICES = (
         (EXISTING_OWNER, _('Existing Owner')),
@@ -452,6 +481,23 @@ class OwnerChoices:
         (FOSTER, _('Foster')),
         (ADOPTER, _('Adopter')),
         (NO_OWNER, _('No Owner')),
+        (OTHER, _('Other')),
+    )
+
+
+class CareTypes:
+    VACCINATION = 'vaccination'
+    MEDICINE = 'medicine'
+    GROOMING = 'grooming'
+    BOARDING = 'boarding'
+    OTHER = 'other'
+
+    CARE_TYPES = (
+        (VACCINATION, _('Vaccination')),
+        (MEDICINE, _('Medicine')),
+        (GROOMING, _('Grooming')),
+        (BOARDING, _('Boarding')),
+        (OTHER, _('Other')),
     )
 
 

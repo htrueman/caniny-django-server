@@ -5,7 +5,7 @@ from rest_framework import serializers
 from django.utils.translation import gettext_lazy as _
 from rest_framework.exceptions import ValidationError
 
-from .models import Animal, Breed, AnimalHealth, AnimalHealthVaccination, AnimalHealthMedication, AnimalAppearance, \
+from .models import Animal, Breed, AnimalHealth, AnimalHealthCare, AnimalAppearance, \
     AnimalTraining, AnimalOwner
 
 
@@ -56,8 +56,9 @@ class AnimalListSerializer(serializers.ModelSerializer):
             'for_adoption',
             'for_foster',
             'accommodation',
-            'tag_number',
-            'microchip_number',
+            'tag_id',
+            'chip_producer',
+            'chip_id',
             'joined_reason',
             'entry_date',
             'leave_reason',
@@ -71,27 +72,18 @@ class AnimalListSerializer(serializers.ModelSerializer):
         }
 
 
-class AnimalHealthVaccinationSerializer(serializers.ModelSerializer):
+class AnimalHealthCareSerializer(serializers.ModelSerializer):
     class Meta:
-        model = AnimalHealthVaccination
+        model = AnimalHealthCare
         fields = (
-            'vaccination_type',
-            'vaccination_date',
-        )
-
-
-class AnimalHealthMedicationSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = AnimalHealthMedication
-        fields = (
-            'medication_type',
-            'medication_date',
+            'care_type',
+            'note',
+            'date',
         )
 
 
 class AnimalHealthSerializer(serializers.ModelSerializer):
-    vaccinations = AnimalHealthVaccinationSerializer(source='animalhealthvaccination_set', many=True)
-    medications = AnimalHealthMedicationSerializer(source='animalhealthmedication_set', many=True)
+    care_values = AnimalHealthCareSerializer(source='animalhealthcare_set', many=True)
 
     class Meta:
         model = AnimalHealth
@@ -112,8 +104,7 @@ class AnimalHealthSerializer(serializers.ModelSerializer):
             'gums',
             'describe_health',
 
-            'vaccinations',
-            'medications',
+            'care_values',
         )
 
 
@@ -126,6 +117,7 @@ class AnimalAppearanceSerializer(serializers.ModelSerializer):
             'second_coat_color',
             'third_coat_color',
             'coat_marks',
+            'coat_type',
             'first_eye_color',
             'second_eye_color',
             'ears',
@@ -158,6 +150,9 @@ class AnimalOwnerSerializer(serializers.ModelSerializer):
             'last_name',
             'email',
             'phone_number',
+            'city',
+            'state',
+            'zip_code',
             'origin_country',
             'address',
             'comment',
@@ -197,8 +192,9 @@ class AnimalDetailSerializer(AnimalListSerializer):
             'for_adoption',
             'for_foster',
             'accommodation',
-            'tag_number',
-            'microchip_number',
+            'tag_id',
+            'chip_producer',
+            'chip_id',
             'joined_reason',
             'entry_date',
             'leave_reason',
@@ -218,8 +214,7 @@ class AnimalDetailSerializer(AnimalListSerializer):
 
     def create(self, validated_data):
         animalhealth = validated_data.pop('animalhealth')
-        animalhealthvaccination_set = animalhealth.pop('animalhealthvaccination_set')
-        animalhealthmedication_set = animalhealth.pop('animalhealthmedication_set')
+        animalhealthcare_set = animalhealth.pop('animalhealthcare_set')
         animalappearance = validated_data.pop('animalappearance')
         animaltraining = validated_data.pop('animaltraining')
         animalowner_set = validated_data.pop('animalowner_set')
@@ -227,10 +222,8 @@ class AnimalDetailSerializer(AnimalListSerializer):
         animal = Animal.objects.create(**validated_data)
 
         health = AnimalHealth.objects.create(animal=animal, **animalhealth)
-        for animalhealthvaccination in animalhealthvaccination_set:
-            AnimalHealthVaccination.objects.create(animal_health=health, **animalhealthvaccination)
-        for animalhealthmedication in animalhealthmedication_set:
-            AnimalHealthMedication.objects.create(animal_health=health, **animalhealthmedication)
+        for animalhealthcare in animalhealthcare_set:
+            AnimalHealthCare.objects.create(animal_health=health, **animalhealthcare)
 
         AnimalAppearance.objects.create(animal=animal, **animalappearance)
         AnimalTraining.objects.create(animal=animal, **animaltraining)

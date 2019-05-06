@@ -91,8 +91,9 @@ class Animal(models.Model):
         blank=True,
         choices=constants.Accommodations.ACCOMMODATIONS
     )
-    tag_number = models.PositiveIntegerField(null=True, blank=True)
-    microchip_number = models.PositiveIntegerField(null=True, blank=True)
+    tag_id = models.CharField(max_length=64, null=True, blank=True)
+    chip_producer = models.CharField(max_length=64, null=True, blank=True)
+    chip_id = models.CharField(max_length=64, null=True, blank=True)
     joined_reason = models.CharField(
         max_length=9,
         null=True,
@@ -143,10 +144,11 @@ class AnimalHealth(models.Model):
         return '{}'.format(self.animal)
 
 
-class AnimalHealthVaccination(models.Model):
+class AnimalHealthCare(models.Model):
     animal_health = models.ForeignKey(AnimalHealth, on_delete=models.CASCADE)
-    vaccination_type = models.CharField(max_length=128)
-    vaccination_date = models.DateField()
+    care_type = models.CharField(max_length=11, choices=constants.CareTypes.CARE_TYPES)
+    note = models.CharField(max_length=128, null=True, blank=True)
+    date = models.DateField(null=True, blank=True)
 
     def __str__(self):
         return '{}'.format(self.animal_health)
@@ -169,6 +171,7 @@ class AnimalAppearance(models.Model):
     second_coat_color = models.CharField(max_length=6, choices=constants.CoatColors.COAT_COLORS, null=True, blank=True)
     third_coat_color = models.CharField(max_length=6, choices=constants.CoatColors.COAT_COLORS, null=True, blank=True)
     coat_marks = models.CharField(max_length=8, choices=constants.CoatMarks.COAT_MARKS, null=True, blank=True)
+    coat_type = models.CharField(max_length=8, choices=constants.CoatTypes.COAT_TYPES, null=True, blank=True)
     first_eye_color = models.CharField(max_length=5, choices=constants.EyeColors.EYE_COLORS, null=True, blank=True)
     second_eye_color = models.CharField(max_length=5, choices=constants.EyeColors.EYE_COLORS, null=True, blank=True)
     ears = models.CharField(max_length=8, choices=constants.EarChoices.EAR_CHOICES, null=True, blank=True)
@@ -208,6 +211,9 @@ class AnimalOwner(models.Model):
         null=True,
         blank=True
     )
+    city = models.CharField(max_length=64, null=True, blank=True)
+    state = models.CharField(max_length=64, null=True, blank=True)
+    zip_code = models.CharField(max_length=64, null=True, blank=True)
     origin_country = models.CharField(max_length=64, null=True, blank=True, choices=constants.COUNTRIES)
     address = models.CharField(max_length=256, null=True, blank=True)
     comment = models.TextField(null=True, blank=True)
