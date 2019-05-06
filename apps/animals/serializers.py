@@ -162,10 +162,10 @@ class AnimalOwnerSerializer(serializers.ModelSerializer):
 
 
 class AnimalDetailSerializer(AnimalListSerializer):
-    health = AnimalHealthSerializer(source='animalhealth')
-    appearance = AnimalAppearanceSerializer(source='animalappearance')
-    training = AnimalTrainingSerializer(source='animaltraining')
-    owners = AnimalOwnerSerializer(source='animalowner_set', many=True)
+    health = AnimalHealthSerializer(source='animalhealth', required=False)
+    appearance = AnimalAppearanceSerializer(source='animalappearance', required=False)
+    training = AnimalTrainingSerializer(source='animaltraining', required=False)
+    owners = AnimalOwnerSerializer(source='animalowner_set', many=True, required=False)
 
     class Meta:
         model = Animal
@@ -212,21 +212,31 @@ class AnimalDetailSerializer(AnimalListSerializer):
             'date_of_birth': {'write_only': True},
         }
 
+    def validate(self, data):
+        if data.get('age') and data.get('date_of_birth'):
+            raise serializers.ValidationError([_("Set only age or date of birth.")])
+        elif not data.get('age') and not data.get('date_of_birth'):
+            raise serializers.ValidationError([_("Set either age or date of birth.")])
+        return data
+
     def create(self, validated_data):
-        animalhealth = validated_data.pop('animalhealth')
-        animalhealthcare_set = animalhealth.pop('animalhealthcare_set')
-        animalappearance = validated_data.pop('animalappearance')
-        animaltraining = validated_data.pop('animaltraining')
-        animalowner_set = validated_data.pop('animalowner_set')
+        animalhealth = validated_data.pop('animalhealth', {})
+        animalhealthcare_set = animalhealth.pop('animalhealthcare_set', [])
+        animalappearance = validated_data.pop('animalappearance', {})
+        animaltraining = validated_data.pop('animaltraining', {})
+        animalowner_set = validated_data.pop('animalowner_set', [])
 
         animal = Animal.objects.create(**validated_data)
 
-        health = AnimalHealth.objects.create(animal=animal, **animalhealth)
-        for animalhealthcare in animalhealthcare_set:
-            AnimalHealthCare.objects.create(animal_health=health, **animalhealthcare)
+        if animalhealth:
+            health = AnimalHealth.objects.create(animal=animal, **animalhealth)
+            for animalhealthcare in animalhealthcare_set:
+                AnimalHealthCare.objects.create(animal_health=health, **animalhealthcare)
 
-        AnimalAppearance.objects.create(animal=animal, **animalappearance)
-        AnimalTraining.objects.create(animal=animal, **animaltraining)
+        if animalappearance:
+            AnimalAppearance.objects.create(animal=animal, **animalappearance)
+        if animaltraining:
+            AnimalTraining.objects.create(animal=animal, **animaltraining)
         for animalowner in animalowner_set:
             AnimalOwner.objects.create(animal=animal, **animalowner)
         return animal

@@ -118,6 +118,28 @@ class AnimalViewSet(BulkDeleteMixin, viewsets.ModelViewSet):
         return Response(serializer.data, status=status.HTTP_200_OK, headers=headers)
 
 
+class BreedFilter(filters.FilterSet):
+    class Meta:
+        model = Breed
+        fields = (
+            'species',
+        )
+
+
 class BreedListView(ListAPIView):
     queryset = Breed.objects.all()
     serializer_class = AnimalBreedSerializer
+    filter_backends = (DjangoFilterBackend,)
+    filterset_class = BreedFilter
+
+    def list(self, request, *args, **kwargs):
+        queryset = self.filter_queryset(self.get_queryset())
+
+        if self.request.GET.get('page'):
+            page = self.paginate_queryset(queryset)
+            if page is not None:
+                serializer = self.get_serializer(page, many=True)
+                return self.get_paginated_response(serializer.data)
+
+        serializer = self.get_serializer(queryset, many=True)
+        return Response(serializer.data)
