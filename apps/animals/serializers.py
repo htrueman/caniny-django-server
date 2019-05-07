@@ -6,7 +6,7 @@ from django.utils.translation import gettext_lazy as _
 from rest_framework.exceptions import ValidationError
 
 from .models import Animal, Breed, AnimalHealth, AnimalHealthCare, AnimalAppearance, \
-    AnimalTraining, AnimalOwner
+    AnimalTraining, AnimalOwner, AnimalTableMetadata
 
 
 class AnimalBreedSerializer(serializers.ModelSerializer):
@@ -240,3 +240,11 @@ class AnimalDetailSerializer(AnimalListSerializer):
         for animalowner in animalowner_set:
             AnimalOwner.objects.create(animal=animal, **animalowner)
         return animal
+
+
+class AnimalTableMetadataSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = AnimalTableMetadata
+        fields = (
+            'columns',
+        )

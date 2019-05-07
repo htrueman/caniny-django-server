@@ -6,7 +6,8 @@ from django.db.models import Q
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import viewsets, status
 from django_filters import rest_framework as filters
-from rest_framework.generics import ListAPIView
+from rest_framework.generics import ListAPIView, get_object_or_404, RetrieveUpdateAPIView
+from rest_framework.mixins import RetrieveModelMixin, UpdateModelMixin
 from rest_framework.response import Response
 
 from common_tools.mixins import BulkDeleteMixin
@@ -14,7 +15,8 @@ from common_tools.pagination import PagePagination
 from common_tools.serializers import BulkDeleteSerializer
 from .models import Animal, Breed
 from users import permissions as user_permissions
-from .serializers import AnimalListSerializer, AnimalDetailSerializer, AnimalBreedSerializer
+from .serializers import AnimalListSerializer, AnimalDetailSerializer, AnimalBreedSerializer, \
+    AnimalTableMetadataSerializer, AnimalTableMetadata
 
 
 class AnimalFilter(filters.FilterSet):
@@ -52,9 +54,9 @@ class AnimalFilter(filters.FilterSet):
             'chip_id': ['iexact', 'icontains', 'istartswith', 'iendswith'],
             'joined_reason': ['iexact', 'icontains', 'istartswith', 'iendswith'],
             'entry_date': ['exact', 'gte', 'lte'],
-            'leave_reason': ['exact', 'gte', 'lte'],
+            'leave_reason': ['iexact', 'icontains', 'istartswith', 'iendswith'],
             'leave_date': ['exact', 'gte', 'lte'],
-            'history': ['exact', 'gte', 'lte'],
+            'history': ['iexact', 'icontains', 'istartswith', 'iendswith'],
         }
 
     def age_filter(self, queryset, age, value):
@@ -143,3 +145,12 @@ class BreedListView(ListAPIView):
 
         serializer = self.get_serializer(queryset, many=True)
         return Response(serializer.data)
+
+
+class AnimalTableMetadataView(RetrieveUpdateAPIView):
+    serializer_class = AnimalTableMetadataSerializer
+    http_method_names = ('get', 'put')
+
+    def get_object(self):
+        instance, created = AnimalTableMetadata.objects.get_or_create(user=self.request.user)
+        return instance

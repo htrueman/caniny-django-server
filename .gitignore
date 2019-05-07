@@ -106,3 +106,4 @@ ENV/
 media/
 staticfiles/
 db.sqlite3
+vars.env

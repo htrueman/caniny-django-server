@@ -1,0 +1,37 @@
+version: "3"
+services:
+  postgresdb:
+    image: postgres
+    restart: always
+    expose:
+      - 5432
+    tty: true
+    stdin_open: true
+    env_file:
+      - vars.env
+#  redis:
+#    image: redis
+#    ports:
+#      - '6379:6379'
+#  celery:
+#    build: .
+#    volumes:
+#      - '.:/app'
+#    command: celery worker -A caniny --loglevel=INFO
+#    env_file:
+#      - vars.env
+  django:
+    build: .
+    volumes:
+      - '.:/app'
+    ports:
+      - '8000:8000'
+    tty: true
+    stdin_open: true
+    command: bash -c "python3 manage.py migrate && python3 manage.py runserver 0.0.0.0:8000"
+    env_file:
+      - vars.env
+#networks:
+#  default:
+#    external:
+#      name: nginx-rtmp_default

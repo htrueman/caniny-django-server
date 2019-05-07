@@ -1,8 +1,13 @@
 import uuid
+
+from django.contrib.auth import get_user_model
+from django.contrib.postgres.fields import ArrayField
 from django.db import models
 from phonenumber_field.modelfields import PhoneNumberField
 
 from . import constants
+
+User = get_user_model()
 
 
 class Breed(models.Model):
@@ -118,7 +123,15 @@ class Animal(models.Model):
     organization = models.ForeignKey('organizations.Organization', on_delete=models.CASCADE)
 
     def __str__(self):
-        return '{}, {} {}'.format(self.microchip_number, self.name, self.species)
+        return '{}, {} {}'.format(self.chip_id, self.name, self.species)
+
+
+class AnimalTableMetadata(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    columns = ArrayField(models.CharField(max_length=10, blank=True), default=list)
+
+    def __str__(self):
+        return ', '.join(self.columns)
 
 
 class AnimalHealth(models.Model):

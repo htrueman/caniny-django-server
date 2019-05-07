@@ -8,9 +8,9 @@ APPS_ROOT = os.path.join(BASE_DIR, '../apps')
 sys.path.insert(0, APPS_ROOT)
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'y!@*)!_ncrs7w&#(6^9!!hw!1=9)z0k+91glxo)6#()_t4jl%$'
+SECRET_KEY = os.getenv('SECRET_KEY')
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = [os.getenv('ALLOWED_HOSTS')]
 
 
 # Application definition
@@ -72,8 +72,12 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.getenv('POSTGRES_DB'),
+        'USER': os.getenv('POSTGRES_USER'),
+        'PASSWORD': os.getenv('POSTGRES_PASSWORD'),
+        'HOST': os.getenv('DATABASE_HOST'),
+        'PORT': os.getenv('DATABASE_PORT'),
     }
 }
 
