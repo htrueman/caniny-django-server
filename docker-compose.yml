@@ -9,6 +9,26 @@ services:
     stdin_open: true
     env_file:
       - vars.env
+  uwsgi:
+    image: tiangolo/uwsgi-nginx:python3.7
+    working_dir: /app
+    environment:
+      - UWSGI_INI uwsgi.ini
+    volumes:
+      - '.:/app'
+    ports:
+      - '8000:8000'
+#  django:
+#    build: .
+#    volumes:
+#      - '.:/app'
+#    ports:
+#      - '8000:8000'
+#    tty: true
+#    stdin_open: true
+#    command: bash -c "python3 manage.py migrate && python3 manage.py runserver 0.0.0.0:8000"
+#    env_file:
+#      - vars.env
 #  redis:
 #    image: redis
 #    ports:
@@ -20,17 +40,6 @@ services:
 #    command: celery worker -A caniny --loglevel=INFO
 #    env_file:
 #      - vars.env
-  django:
-    build: .
-    volumes:
-      - '.:/app'
-    ports:
-      - '8000:8000'
-    tty: true
-    stdin_open: true
-    command: bash -c "python3 manage.py migrate && python3 manage.py runserver 0.0.0.0:8000"
-    env_file:
-      - vars.env
 #networks:
 #  default:
 #    external:
