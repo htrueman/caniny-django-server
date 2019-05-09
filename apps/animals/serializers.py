@@ -65,6 +65,9 @@ class AnimalListSerializer(serializers.ModelSerializer):
             'leave_date',
             'history',
             'image',
+            'adoption_date',
+            'fostering_date',
+            'sheltering_background',
         )
 
         extra_kwargs = {
@@ -201,6 +204,9 @@ class AnimalDetailSerializer(AnimalListSerializer):
             'leave_date',
             'history',
             'image',
+            'adoption_date',
+            'fostering_date',
+            'sheltering_background',
 
             'health',
             'appearance',

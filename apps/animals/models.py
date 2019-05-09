@@ -90,6 +90,9 @@ class Animal(models.Model):
         blank=True,
         choices=constants.FosterChoices.FOSTER_CHOICES
     )
+    adoption_date = models.DateField(null=True, blank=True)
+    fostering_date = models.DateField(null=True, blank=True)
+    sheltering_background = models.TextField(null=True, blank=True)
     accommodation = models.CharField(
         max_length=9,
         null=True,
