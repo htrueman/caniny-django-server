@@ -25,6 +25,8 @@ services:
     command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
     env_file:
       - vars.env
+    depends_on:
+      - certbot
   certbot:
     image: certbot/certbot
     volumes:
