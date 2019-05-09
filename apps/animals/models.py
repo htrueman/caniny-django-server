@@ -11,7 +11,7 @@ User = get_user_model()
 
 
 class Breed(models.Model):
-    name = models.CharField(max_length=32)
+    name = models.CharField(max_length=64)
     species = models.CharField(choices=constants.Species.SPECIES, max_length=5)
 
     def __str__(self):
