@@ -224,8 +224,8 @@ class AnimalDetailSerializer(AnimalListSerializer):
     def validate(self, data):
         if data.get('age') and data.get('date_of_birth'):
             raise serializers.ValidationError([_("Set only age or date of birth.")])
-        elif (not data.get('age')) and (not data.get('date_of_birth')):
-            raise serializers.ValidationError([_("Set either age or date of birth.")])
+        # elif (not data.get('age')) and (not data.get('date_of_birth')):
+        #     raise serializers.ValidationError([_("Set either age or date of birth.")])
         return data
 
     def create(self, validated_data):
