@@ -77,6 +77,43 @@ class AnimalViewSet(BulkDeleteMixin, viewsets.ModelViewSet):
     filterset_class = AnimalFilter
     pagination_class = PagePagination
     http_method_names = ('get', 'post', 'put', 'delete', 'head', 'options',)
+    ordering_fields = (
+        'id',
+        'name',
+        'date_of_birth',
+        'age',
+        'life_stage',
+        'gender',
+        'species',
+        'breed',
+        'species_details',
+        'origin_country',
+        'pregnant',
+        'personality',
+        'energy_level',
+        'cats_friendly',
+        'dogs_friendly',
+        'animals_friendly',
+        'humans_friendly',
+        'kids_friendly',
+        'bites',
+        'for_adoption',
+        'for_foster',
+        'accommodation',
+        'tag_id',
+        'chip_producer',
+        'chip_id',
+        'joined_reason',
+        'entry_date',
+        'leave_reason',
+        'leave_date',
+        'history',
+        'image',
+        'image_id',
+        'adoption_date',
+        'fostering_date',
+        'sheltering_background',
+    )
 
     def get_permissions(self):
         if self.action in ('destroy', 'update', 'create', 'bulk_delete',):
