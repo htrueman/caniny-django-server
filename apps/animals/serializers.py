@@ -22,6 +22,7 @@ class AnimalBreedSerializer(serializers.ModelSerializer):
 class AnimalListSerializer(serializers.ModelSerializer):
     age = serializers.SerializerMethodField()
     image = Base64ImageField(source='photo', required=False)
+    image_id = Base64ImageField(source='photo_id', required=False)
 
     def get_age(self, obj):
         return obj.age if obj.age else relativedelta(datetime.datetime.now(), obj.date_of_birth).years
@@ -65,6 +66,7 @@ class AnimalListSerializer(serializers.ModelSerializer):
             'leave_date',
             'history',
             'image',
+            'image_id',
             'adoption_date',
             'fostering_date',
             'sheltering_background',
@@ -204,6 +206,7 @@ class AnimalDetailSerializer(AnimalListSerializer):
             'leave_date',
             'history',
             'image',
+            'image_id',
             'adoption_date',
             'fostering_date',
             'sheltering_background',

@@ -122,6 +122,11 @@ class Animal(models.Model):
         null=True,
         blank=True
     )
+    photo_id = models.ImageField(
+        upload_to='animals/photo_ids',
+        null=True,
+        blank=True
+    )
 
     organization = models.ForeignKey('organizations.Organization', on_delete=models.CASCADE)
 
