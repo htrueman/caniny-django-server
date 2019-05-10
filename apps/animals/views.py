@@ -72,7 +72,7 @@ class AnimalFilter(filters.FilterSet):
 
 
 class AnimalViewSet(BulkDeleteMixin, viewsets.ModelViewSet):
-    filter_backends = (DjangoFilterBackend,)
+    filter_backends = (OrderingFilter, DjangoFilterBackend,)
     filterset_class = AnimalFilter
     pagination_class = PagePagination
     http_method_names = ('get', 'post', 'put', 'delete', 'head', 'options',)
