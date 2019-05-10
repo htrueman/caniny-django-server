@@ -3,17 +3,24 @@ from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 
 from organizations.models import Organization
-from .serializers import OrganizationSerializer
+from users.permissions import SuperAdminPermission
+from .serializers import OrganizationSerializer, OrganizationDetailSerializer
 
 
 class OrganizationViewSet(viewsets.ModelViewSet):
-    serializer_class = OrganizationSerializer
     queryset = Organization.objects.all()
 
     def get_permissions(self):
         if self.action == 'list':
             return [AllowAny()]
+        elif self.action in ('retrieve', 'update', 'partial_update'):
+            return [SuperAdminPermission()]
         return super().get_permissions()
+
+    def get_serializer_class(self):
+        if self.action == 'retrieve':
+            return OrganizationDetailSerializer
+        return OrganizationSerializer
 
     def list(self, request, *args, **kwargs):
         queryset = self.filter_queryset(self.get_queryset())

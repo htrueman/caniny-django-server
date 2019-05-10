@@ -29,7 +29,7 @@ urlpatterns = [
     path('docs/', schema_view.with_ui(), name='docs'),
 
     path('api/<version>/', include('users.routers')),
-    path('api/<version>/organizations/', include('organizations.routers')),
+    path('api/<version>/', include('organizations.routers')),
     path('api/<version>/', include('animals.routers')),
 ] \
     + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) \
