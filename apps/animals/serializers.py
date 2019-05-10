@@ -20,7 +20,6 @@ class AnimalBreedSerializer(serializers.ModelSerializer):
 
 
 class AnimalListSerializer(serializers.ModelSerializer):
-    age = serializers.SerializerMethodField()
     image = Base64ImageField(source='photo', required=False)
     image_id = Base64ImageField(source='photo_id', required=False)
 
