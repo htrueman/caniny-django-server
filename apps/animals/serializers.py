@@ -88,7 +88,7 @@ class AnimalHealthCareSerializer(serializers.ModelSerializer):
 
 
 class AnimalHealthSerializer(serializers.ModelSerializer):
-    care_values = AnimalHealthCareSerializer(source='animalhealthcare_set', many=True)
+    care_values = AnimalHealthCareSerializer(source='animalhealthcare_set', many=True, required=False)
 
     class Meta:
         model = AnimalHealth
