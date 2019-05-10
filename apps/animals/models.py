@@ -1,13 +1,9 @@
 import uuid
-
-from django.contrib.auth import get_user_model
 from django.contrib.postgres.fields import ArrayField
 from django.db import models
 from phonenumber_field.modelfields import PhoneNumberField
 
 from . import constants
-
-User = get_user_model()
 
 
 class Breed(models.Model):
@@ -135,7 +131,7 @@ class Animal(models.Model):
 
 
 class AnimalTableMetadata(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField('users.User', on_delete=models.CASCADE)
     columns = ArrayField(models.CharField(max_length=32, blank=True), default=list)
 
     def __str__(self):
