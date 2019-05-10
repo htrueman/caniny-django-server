@@ -89,30 +89,6 @@ class AnimalViewSet(BulkDeleteMixin, viewsets.ModelViewSet):
                 id__in=ids)
         return Animal.objects.filter(organization=self.request.user.organization)
 
-    def create(self, request, *args, **kwargs):
-        columns = [
-            'name',
-            'age',
-            'gender',
-            'species',
-            'breed',
-            'human_friendly',
-            'animals_friendly',
-            'entry_date',
-        ]
-        try:
-            table_metadata = AnimalTableMetadata.objects.get(user=request.user)
-            if not table_metadata.columns:
-                table_metadata.columns = columns
-                table_metadata.save()
-        except AnimalTableMetadata.DoesNotExist:
-            AnimalTableMetadata.objects.create(
-                user=request.user,
-                columns=columns
-            )
-
-        return super().create(request, *args, **kwargs)
-
     def get_serializer_class(self):
         if self.action == 'bulk_delete':
             return BulkDeleteSerializer
