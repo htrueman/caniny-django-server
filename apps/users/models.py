@@ -150,17 +150,17 @@ class User(AbstractBaseUser, PermissionsMixin):
 
         super().save(*args, **kwargs)
 
-        if not self.__pk and self.pk:
-            AnimalTableMetadata.objects.create(
-                user_id=self.__pk,
-                columns=[
-                    'name',
-                    'age',
-                    'gender',
-                    'species',
-                    'breed',
-                    'human_friendly',
-                    'animals_friendly',
-                    'entry_date',
-                ]
-            )
+        # if not self.__pk and self.pk:
+        #     AnimalTableMetadata.objects.create(
+        #         user_id=self.__pk,
+        #         columns=[
+        #             'name',
+        #             'age',
+        #             'gender',
+        #             'species',
+        #             'breed',
+        #             'human_friendly',
+        #             'animals_friendly',
+        #             'entry_date',
+        #         ]
+        #     )
