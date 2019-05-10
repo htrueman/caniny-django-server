@@ -6,7 +6,7 @@ from . import views
 class OrganizationRouter(routers.SimpleRouter):
     extra_routes = [
         routers.Route(
-            url=r'^{prefix}/manage{trailing_slash}$',
+            url=r'^{prefix}/managed{trailing_slash}$',
             mapping={
                 'put': 'update',
                 'patch': 'partial_update',
