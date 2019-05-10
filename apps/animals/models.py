@@ -136,7 +136,7 @@ class Animal(models.Model):
 
 class AnimalTableMetadata(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    columns = ArrayField(models.CharField(max_length=10, blank=True), default=list)
+    columns = ArrayField(models.CharField(max_length=32, blank=True), default=list)
 
     def __str__(self):
         return ', '.join(self.columns)

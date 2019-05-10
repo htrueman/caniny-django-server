@@ -6,8 +6,7 @@ from django.db.models import Q
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import viewsets, status
 from django_filters import rest_framework as filters
-from rest_framework.generics import ListAPIView, get_object_or_404, RetrieveUpdateAPIView
-from rest_framework.mixins import RetrieveModelMixin, UpdateModelMixin
+from rest_framework.generics import ListAPIView, RetrieveUpdateAPIView
 from rest_framework.response import Response
 
 from common_tools.mixins import BulkDeleteMixin
@@ -89,6 +88,30 @@ class AnimalViewSet(BulkDeleteMixin, viewsets.ModelViewSet):
                 organization=self.request.user.organization,
                 id__in=ids)
         return Animal.objects.filter(organization=self.request.user.organization)
+
+    def create(self, request, *args, **kwargs):
+        columns = [
+            'name',
+            'age',
+            'gender',
+            'species',
+            'breed',
+            'human_friendly',
+            'animals_friendly',
+            'entry_date',
+        ]
+        try:
+            table_metadata = AnimalTableMetadata.objects.get(user=request.user)
+            if not table_metadata.columns:
+                table_metadata.columns = columns
+                table_metadata.save()
+        except AnimalTableMetadata.DoesNotExist:
+            AnimalTableMetadata.objects.create(
+                user=request.user,
+                columns=columns
+            )
+
+        return super().create(request, *args, **kwargs)
 
     def get_serializer_class(self):
         if self.action == 'bulk_delete':
