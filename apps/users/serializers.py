@@ -280,6 +280,19 @@ class PasswordResetSerializer(serializers.Serializer):
         return attrs
 
 
+class PasswordChangeSerializer(PasswordResetSerializer):
+    old_password = serializers.CharField(
+        max_length=128,
+        style={'input_type': 'password'},
+        write_only=True
+    )
+
+    def validate_old_password(self, val):
+        if not self.context['request'].user.check_password(val):
+            raise ValidationError(_('Old password is wrong.'))
+        return val
+
+
 class UserSerializer(serializers.ModelSerializer):
     avatar = Base64ImageField(source='profile_image', required=False)
 

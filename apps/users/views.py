@@ -18,7 +18,8 @@ from .constants import UserTypes
 from .utils import account_activation_token
 from .serializers import UserSignUpSerializer, UserSignUpGoogleSerializer, UserSignUpFBSerializer, \
     UserSignUpIGSerializer, LoginSerializer, RequestAccessSerializer, \
-    PasswordResetSendLinkSerializer, PasswordResetSerializer, UserSerializer, SuperAdminUserSerializer
+    PasswordResetSendLinkSerializer, PasswordResetSerializer, UserSerializer, SuperAdminUserSerializer, \
+    PasswordChangeSerializer
 from . import permissions as user_permissions
 
 User = get_user_model()
@@ -167,7 +168,7 @@ class UserViewSet(BulkDeleteMixin, viewsets.ModelViewSet):
 
     def get_serializer_class(self):
         if self.action == 'change_password':
-            return PasswordResetSerializer
+            return PasswordChangeSerializer
         elif self.action == 'bulk_delete':
             return BulkDeleteSerializer
         elif self.action in ['update', 'create', 'partial_update'] and self.request.user.user_type in [
