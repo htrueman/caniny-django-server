@@ -152,9 +152,9 @@ class KidsFriendlyChoices:
         (NO, _('No')),
         (ONLY_FEMALES, _('Only females')),
         (ONLY_MALES, _('Only males')),
-        (ONLY_MALES, _('Only young kids')),
-        (ONLY_MALES, _('Only old kids')),
-        (ONLY_MALES, _('Both young & old')),
+        (ONLY_YOUNG_KIDS, _('Only young kids')),
+        (ONLY_OLD_KIDS, _('Only old kids')),
+        (BOTH_YOUNG_AND_OLD, _('Both young & old')),
         (UNKNOWN, _('Unknown')),
     )
 
