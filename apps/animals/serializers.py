@@ -73,10 +73,6 @@ class AnimalListSerializer(serializers.ModelSerializer):
             'sheltering_background',
         )
 
-        extra_kwargs = {
-            'date_of_birth': {'write_only': True},
-        }
-
 
 class AnimalHealthCareSerializer(serializers.ModelSerializer):
     class Meta:
@@ -220,10 +216,6 @@ class AnimalDetailSerializer(AnimalListSerializer):
             'training',
             'owners',
         )
-
-        extra_kwargs = {
-            'date_of_birth': {'write_only': True},
-        }
 
     def validate(self, data):
         if data.get('age') and data.get('date_of_birth'):
