@@ -235,7 +235,7 @@ class AnimalDetailSerializer(AnimalListSerializer):
 
         animal = Animal.objects.create(**validated_data)
 
-        if animalhealth:
+        if animalhealth or len(animalhealthcare_set) > 0:
             health = AnimalHealth.objects.create(animal=animal, **animalhealth)
             for animalhealthcare in animalhealthcare_set:
                 AnimalHealthCare.objects.create(animal_health=health, **animalhealthcare)
