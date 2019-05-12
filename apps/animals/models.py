@@ -32,6 +32,7 @@ class Animal(models.Model):
         blank=False,
         choices=constants.Personalities.PERSONALITIES
     )
+    personality_description = models.TextField(null=True, blank=True)
     energy_level = models.CharField(
         max_length=9,
         null=True,
