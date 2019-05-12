@@ -206,5 +206,24 @@ class AnimalTableMetadataView(RetrieveUpdateAPIView):
     http_method_names = ('get', 'put')
 
     def get_object(self):
-        instance, created = AnimalTableMetadata.objects.get_or_create(user=self.request.user)
+        columns = [
+            'name',
+            'age',
+            'gender',
+            'species',
+            'breed',
+            'human_friendly',
+            'animals_friendly',
+            'entry_date',
+        ]
+        try:
+            instance = AnimalTableMetadata.objects.get(user=self.request.user)
+            if not instance.columns:
+                instance.columns = columns
+                instance.save()
+        except AnimalTableMetadata.DoesNotExist:
+            instance = AnimalTableMetadata.objects.create(
+                user=self.request.user,
+                columns=columns
+            )
         return instance
