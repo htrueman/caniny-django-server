@@ -1,4 +1,5 @@
 import datetime
+from contextlib import suppress
 from copy import deepcopy
 
 from dateutil.relativedelta import relativedelta
@@ -13,7 +14,7 @@ from rest_framework.filters import OrderingFilter
 from common_tools.mixins import BulkDeleteMixin
 from common_tools.pagination import PagePagination
 from common_tools.serializers import BulkDeleteSerializer
-from .models import Animal, Breed
+from .models import Animal, Breed, AnimalOwner
 from users import permissions as user_permissions
 from .serializers import AnimalListSerializer, AnimalDetailSerializer, AnimalBreedSerializer, \
     AnimalTableMetadataSerializer, AnimalTableMetadata
@@ -148,9 +149,31 @@ class AnimalViewSet(BulkDeleteMixin, viewsets.ModelViewSet):
         old_id = deepcopy(instance.id)
         instance.delete()
         new_instance = self.perform_update(serializer)
+        old_new_insctance_id = deepcopy(new_instance.id)
         new_instance_id = deepcopy(new_instance.id)
         new_instance.id = old_id
         new_instance.save()
+
+        with suppress(Exception):
+            new_instance.animaltraining.animal = new_instance
+            new_instance.animaltraining.save()
+
+        with suppress(Exception):
+            new_instance.animalhealth.animal = new_instance
+            new_instance.animalhealth.save()
+
+        with suppress(Exception):
+            new_instance.animalappearance.animal = new_instance
+            new_instance.animalappearance.save()
+
+        # with suppress(Exception):
+
+
+        print(new_instance.id)
+        print(AnimalOwner.objects.first().animal.id)
+        print(new_instance.animalowner_set.all())
+        AnimalOwner.objects.filter(animal_id=old_new_insctance_id).update(animal=new_instance)
+
         Animal.objects.filter(id=new_instance_id).delete()
 
         headers = self.get_success_headers(serializer.data)
