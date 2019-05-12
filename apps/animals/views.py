@@ -166,12 +166,6 @@ class AnimalViewSet(BulkDeleteMixin, viewsets.ModelViewSet):
             new_instance.animalappearance.animal = new_instance
             new_instance.animalappearance.save()
 
-        # with suppress(Exception):
-
-
-        print(new_instance.id)
-        print(AnimalOwner.objects.first().animal.id)
-        print(new_instance.animalowner_set.all())
         AnimalOwner.objects.filter(animal_id=old_new_insctance_id).update(animal=new_instance)
 
         Animal.objects.filter(id=new_instance_id).delete()
