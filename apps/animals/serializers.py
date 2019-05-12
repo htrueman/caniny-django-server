@@ -59,6 +59,7 @@ class AnimalListSerializer(serializers.ModelSerializer):
             'tag_id',
             'chip_producer',
             'chip_id',
+            'join_date',
             'joined_reason',
             'entry_date',
             'leave_reason',
@@ -162,6 +163,7 @@ class AnimalOwnerSerializer(serializers.ModelSerializer):
             'comment',
             'profile_image_base',
             'profile_id_image_base',
+            'registration_date',
         )
 
 
@@ -199,6 +201,7 @@ class AnimalDetailSerializer(AnimalListSerializer):
             'tag_id',
             'chip_producer',
             'chip_id',
+            'join_date',
             'joined_reason',
             'entry_date',
             'leave_reason',
@@ -223,6 +226,8 @@ class AnimalDetailSerializer(AnimalListSerializer):
     def validate(self, data):
         if data.get('age') and data.get('date_of_birth'):
             raise serializers.ValidationError([_("Set only age or date of birth.")])
+        if data.get('date_of_birth'):
+            data['age'] = relativedelta(datetime.datetime.now(), data.get('date_of_birth')).years
         # elif (not data.get('age')) and (not data.get('date_of_birth')):
         #     raise serializers.ValidationError([_("Set either age or date of birth.")])
         return data
