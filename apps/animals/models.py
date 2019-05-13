@@ -150,7 +150,7 @@ class AnimalHealth(models.Model):
     disabled = models.BooleanField(null=True, blank=True)
     injured = models.BooleanField(null=True, blank=True)
     cryptorchid = models.BooleanField(null=True, blank=True)
-    sterilized = models.CharField(max_length=8, null=True, blank=True)
+    sterilized = models.CharField(max_length=8, null=True, blank=True, choices=constants.SterilizedChoices.STERILIZED)
     sterilized_date = models.DateField(null=True, blank=True)
     eyes_sight = models.CharField(max_length=9, null=True, blank=True, choices=constants.EyesSights.EYES_SIGHTS)
     blind = models.CharField(max_length=7, null=True, blank=True, choices=constants.BlindChoices.BLIND_CHOICES)
