@@ -270,10 +270,12 @@ class WeightConditions:
 class SterilizedChoices:
     SPAYED = 'spayed'
     NEUTERED = 'neutered'
+    NO = 'no'
 
     STERILIZED = (
         (SPAYED, _('Spayed')),
         (NEUTERED, _('Neutered')),
+        (NO, _('No')),
     )
 
 
