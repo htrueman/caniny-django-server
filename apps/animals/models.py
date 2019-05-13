@@ -32,6 +32,7 @@ class Animal(models.Model):
         blank=False,
         choices=constants.Personalities.PERSONALITIES
     )
+    personality_description = models.TextField(null=True, blank=True)
     energy_level = models.CharField(
         max_length=9,
         null=True,
@@ -98,6 +99,7 @@ class Animal(models.Model):
     tag_id = models.CharField(max_length=64, null=True, blank=True)
     chip_producer = models.CharField(max_length=64, null=True, blank=True)
     chip_id = models.CharField(max_length=64, null=True, blank=True)
+    join_date = models.DateField(null=True, blank=True)
     joined_reason = models.CharField(
         max_length=9,
         null=True,
@@ -241,6 +243,10 @@ class AnimalOwner(models.Model):
     )
     profile_id_image = models.ImageField(
         upload_to='animals/owners/profile_id_images',
+        null=True,
+        blank=True
+    )
+    registration_date = models.DateField(
         null=True,
         blank=True
     )
