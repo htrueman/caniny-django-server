@@ -1,3 +1,5 @@
+import base64
+
 from django.contrib.auth import get_user_model
 from rest_framework import viewsets, mixins, status
 from rest_framework.decorators import api_view, action, permission_classes
@@ -150,7 +152,8 @@ class UserFilter(filters.FilterSet):
         }
 
     def phone_number_filter(self, queryset, filter_key, value):
-        return queryset.filter(**{filter_key: str(value)})
+        filter_value = base64.b64decode(value)
+        return queryset.filter(**{filter_key: filter_value})
 
 
 class UserViewSet(BulkDeleteMixin, viewsets.ModelViewSet):
