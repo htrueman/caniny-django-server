@@ -1,3 +1,5 @@
+import base64
+
 from django.contrib.auth import get_user_model
 from rest_framework import viewsets, mixins, status
 from rest_framework.decorators import api_view, action, permission_classes
@@ -133,6 +135,11 @@ class ConfirmPasswordResetView(GenericAPIView):
 
 
 class UserFilter(filters.FilterSet):
+    phone_number__iexact = filters.CharFilter(method='phone_number_filter')
+    phone_number__icontains = filters.CharFilter(method='phone_number_filter')
+    phone_number__istartswith = filters.CharFilter(method='phone_number_filter')
+    phone_number__iendswith = filters.CharFilter(method='phone_number_filter')
+
     class Meta:
         model = User
         fields = {
@@ -143,6 +150,9 @@ class UserFilter(filters.FilterSet):
             'user_type': ['iexact'],
             'join_date': ['exact', 'gte', 'lte'],
         }
+
+    def phone_number_filter(self, queryset, filter_key, value):
+        return queryset.filter(**{filter_key: base64.b64decode(value).decode('utf-8')})
 
 
 class UserViewSet(BulkDeleteMixin, viewsets.ModelViewSet):

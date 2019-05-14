@@ -9,7 +9,7 @@ from rest_framework import viewsets, status
 from django_filters import rest_framework as filters
 from rest_framework.generics import ListAPIView, RetrieveUpdateAPIView
 from rest_framework.response import Response
-from rest_framework.filters import OrderingFilter
+from rest_framework.filters import OrderingFilter, SearchFilter
 
 from common_tools.mixins import BulkDeleteMixin
 from common_tools.pagination import PagePagination
@@ -74,10 +74,44 @@ class AnimalFilter(filters.FilterSet):
 
 
 class AnimalViewSet(BulkDeleteMixin, viewsets.ModelViewSet):
-    filter_backends = (OrderingFilter, DjangoFilterBackend,)
+    filter_backends = (OrderingFilter, SearchFilter, DjangoFilterBackend,)
     filterset_class = AnimalFilter
     pagination_class = PagePagination
     http_method_names = ('get', 'post', 'put', 'delete', 'head', 'options',)
+    search_fields = (
+        'name',
+        'date_of_birth',
+        'age',
+        'life_stage',
+        'gender',
+        'species',
+        'breed__name',
+        'species_details',
+        'origin_country',
+        'pregnant',
+        'personality',
+        'energy_level',
+        'cats_friendly',
+        'dogs_friendly',
+        'animals_friendly',
+        'humans_friendly',
+        'kids_friendly',
+        'bites',
+        'for_adoption',
+        'for_foster',
+        'accommodation',
+        'tag_id',
+        'chip_producer',
+        'chip_id',
+        'joined_reason',
+        'entry_date',
+        'leave_reason',
+        'leave_date',
+        'history',
+        'adoption_date',
+        'fostering_date',
+        'sheltering_background',
+    )
     ordering_fields = (
         'id',
         'name',
