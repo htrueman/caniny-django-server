@@ -79,14 +79,13 @@ class AnimalViewSet(BulkDeleteMixin, viewsets.ModelViewSet):
     pagination_class = PagePagination
     http_method_names = ('get', 'post', 'put', 'delete', 'head', 'options',)
     search_fields = (
-        'id',
         'name',
         'date_of_birth',
         'age',
         'life_stage',
         'gender',
         'species',
-        'breed',
+        'breed__name',
         'species_details',
         'origin_country',
         'pregnant',
@@ -123,7 +122,7 @@ class AnimalViewSet(BulkDeleteMixin, viewsets.ModelViewSet):
         'life_stage',
         'gender',
         'species',
-        'breed',
+        'breed__name',
         'species_details',
         'origin_country',
         'pregnant',
