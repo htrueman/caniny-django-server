@@ -133,6 +133,11 @@ class ConfirmPasswordResetView(GenericAPIView):
 
 
 class UserFilter(filters.FilterSet):
+    phone_number__iexact = filters.CharFilter(method='phone_number_filter')
+    phone_number__icontains = filters.CharFilter(method='phone_number_filter')
+    phone_number__istartswith = filters.CharFilter(method='phone_number_filter')
+    phone_number__iendswith = filters.CharFilter(method='phone_number_filter')
+
     class Meta:
         model = User
         fields = {
@@ -143,6 +148,9 @@ class UserFilter(filters.FilterSet):
             'user_type': ['iexact'],
             'join_date': ['exact', 'gte', 'lte'],
         }
+
+    def phone_number_filter(self, queryset, filter_key, value):
+        return queryset.filter(**{filter_key: str(value)})
 
 
 class UserViewSet(BulkDeleteMixin, viewsets.ModelViewSet):
