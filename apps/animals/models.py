@@ -76,13 +76,13 @@ class Animal(models.Model):
         choices=constants.BiteChoices.BITE_CHOICES
     )
     for_adoption = models.CharField(
-        max_length=4,
+        max_length=5,
         null=True,
         blank=True,
         choices=constants.AdoptionChoices.ADOPTION_CHOICES
     )
     for_foster = models.CharField(
-        max_length=4,
+        max_length=5,
         null=True,
         blank=True,
         choices=constants.FosterChoices.FOSTER_CHOICES
