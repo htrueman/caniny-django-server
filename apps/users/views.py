@@ -152,8 +152,7 @@ class UserFilter(filters.FilterSet):
         }
 
     def phone_number_filter(self, queryset, filter_key, value):
-        filter_value = base64.b64decode(value)
-        return queryset.filter(**{filter_key: filter_value})
+        return queryset.filter(**{filter_key: base64.b64decode(value).decode('utf-8')})
 
 
 class UserViewSet(BulkDeleteMixin, viewsets.ModelViewSet):
