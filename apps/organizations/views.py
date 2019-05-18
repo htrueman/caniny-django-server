@@ -11,11 +11,14 @@ class OrganizationViewSet(viewsets.ModelViewSet):
     queryset = Organization.objects.all()
 
     def get_permissions(self):
-        if self.action == 'list':
+        if self.action in ('retrieve', 'list',):
             return [AllowAny()]
-        elif self.action in ('retrieve', 'update', 'partial_update'):
+        elif self.action in ('update', 'partial_update'):
             return [SuperAdminPermission()]
         return super().get_permissions()
+
+    def get_object(self):
+        return self.request.user.organization
 
     def get_serializer_class(self):
         if self.action == 'retrieve':
