@@ -67,10 +67,9 @@ class AnimalFilter(filters.FilterSet):
     def age_bound_filter(self, queryset, age, value):
         left_bound_date_of_birth = datetime.datetime.now().year - value
         if 'gte' in age:
-            q = Q(age__gte=value) | Q(date_of_birth__gte=left_bound_date_of_birth)
+            return queryset.filter(Q(age__gte=value) | Q(date_of_birth__gte=left_bound_date_of_birth))
         else:
-            q = Q(age__lte=value) | Q(date_of_birth__lte=left_bound_date_of_birth)
-        return queryset.filter(q)
+            return queryset.filter(Q(age__lte=value) | Q(date_of_birth__lte=left_bound_date_of_birth))
 
 
 class AnimalViewSet(BulkDeleteMixin, viewsets.ModelViewSet):
