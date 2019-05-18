@@ -61,11 +61,11 @@ class AnimalFilter(filters.FilterSet):
         }
 
     def age_filter(self, queryset, age, value):
-        left_bound_date_of_birth = datetime.datetime.now().year - value
+        left_bound_date_of_birth = datetime.datetime.now() - relativedelta(years=+value)
         return queryset.filter(Q(age=value) | Q(date_of_birth=left_bound_date_of_birth))
 
     def age_bound_filter(self, queryset, age, value):
-        left_bound_date_of_birth = datetime.datetime.now().year - value
+        left_bound_date_of_birth = datetime.datetime.now() - relativedelta(years=+value)
         if 'gte' in age:
             return queryset.filter(Q(age__gte=value) | Q(date_of_birth__gte=left_bound_date_of_birth))
         else:
