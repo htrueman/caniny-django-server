@@ -68,9 +68,9 @@ class AnimalFilter(filters.FilterSet):
         left_bound_date_of_birth = datetime.datetime.now() - relativedelta(years=+value)
         print(left_bound_date_of_birth, value)
         if 'gte' in age:
-            return queryset.filter(Q(age__gte=value) | Q(date_of_birth__gte=left_bound_date_of_birth))
+            return queryset.filter(Q(age__gte=value) | Q(date_of_birth__lte=left_bound_date_of_birth))
         else:
-            return queryset.filter(Q(age__lte=value) | Q(date_of_birth__lte=left_bound_date_of_birth))
+            return queryset.filter(Q(age__lte=value) | Q(date_of_birth__gte=left_bound_date_of_birth))
 
 
 class AnimalViewSet(BulkDeleteMixin, viewsets.ModelViewSet):
