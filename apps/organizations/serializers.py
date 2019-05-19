@@ -14,7 +14,7 @@ class OrganizationSerializer(serializers.ModelSerializer):
 
 
 class OrganizationDetailSerializer(serializers.ModelSerializer):
-    logo_image = Base64ImageField(source='logo', required=False, represent_in_base64=True)
+    logo_image = Base64ImageField(source='logo', required=False)
 
     class Meta:
         model = Organization
