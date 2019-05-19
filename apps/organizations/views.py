@@ -21,7 +21,7 @@ class OrganizationViewSet(viewsets.ModelViewSet):
         return self.request.user.organization
 
     def get_serializer_class(self):
-        if self.action == 'retrieve':
+        if self.action in ('update', 'partial_update', 'retrieve'):
             return OrganizationDetailSerializer
         return OrganizationSerializer
 
