@@ -1,6 +1,14 @@
 {% autoescape off %}
-Hello,
-Please click on the link to confirm your registration,
-{#{{ domain }}{% url 'users:activate' version='v1' uidb64=uid token=token %}#}
-{{ domain }}/login?id={{ uid }}&token={{ token }}
+
+Hello, <br>
+<br>
+Welcome to Caniny. <br>
+<br>
+Please confirm your registration by clicking on the following link: <br>
+<br>
+{{ domain }}/login?id={{ uid }}&token={{ token }} <br>
+<br>
+Regards <br>
+Caniny Admin
+
 {% endautoescape %}

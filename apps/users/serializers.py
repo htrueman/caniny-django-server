@@ -1,6 +1,7 @@
 import requests
 from django.contrib.auth import get_user_model, authenticate
 from django.core.mail import send_mail
+from django.template.loader import render_to_string
 from django.utils.crypto import get_random_string
 from drf_extra_fields.fields import Base64ImageField
 from rest_framework import serializers
@@ -334,9 +335,13 @@ class SuperAdminUserSerializer(UserSerializer):
     def set_password(user):
         user_password = get_random_string(8)
         user.set_password(user_password)
+        message = render_to_string('forgot_password_email.html', {
+            'domain': settings.HOST_NAME,
+            'password': user_password,
+        })
         send_mail(
             'Your Caniny password',
-            'Your Caniny password is {}. Log in {}/login.'.format(user_password, settings.HOST_NAME),
+            message,
             settings.DEFAULT_FROM_EMAIL,
             (user.email,)
         )
