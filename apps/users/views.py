@@ -190,11 +190,8 @@ class UserViewSet(BulkDeleteMixin, viewsets.ModelViewSet):
         return UserSerializer
 
     def get_permissions(self):
-        if self.action in ('destroy', 'update', 'partial_update', 'change_password', 'bulk_delete',):
+        if self.action in ('bulk_delete',):
             return [user_permissions.SuperAdminPermission()]
-        elif self.action in ('destroy', 'update', 'partial_update', 'change_password',) \
-                and self.request.user == self.get_object():
-            return super().get_permissions()
         return super().get_permissions()
 
     def get_queryset(self, ids=None):
