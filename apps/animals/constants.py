@@ -152,9 +152,9 @@ class KidsFriendlyChoices:
         (NO, _('No')),
         (ONLY_FEMALES, _('Only females')),
         (ONLY_MALES, _('Only males')),
-        (ONLY_MALES, _('Only young kids')),
-        (ONLY_MALES, _('Only old kids')),
-        (ONLY_MALES, _('Both young & old')),
+        (ONLY_YOUNG_KIDS, _('Only young kids')),
+        (ONLY_OLD_KIDS, _('Only old kids')),
+        (BOTH_YOUNG_AND_OLD, _('Both young & old')),
         (UNKNOWN, _('Unknown')),
     )
 
@@ -172,11 +172,13 @@ class BiteChoices:
 class AdoptionChoices:
     YES = 'yes'
     NO = 'no'
+    TO_BE = 'to_be'
     HOLD = 'hold'
 
     ADOPTION_CHOICES = (
         (YES, _('Yes')),
         (NO, _('No')),
+        (TO_BE, _('To be')),
         (HOLD, _('Hold')),
     )
 
@@ -219,6 +221,7 @@ class JoinedReasons:
     NEGLECTED = 'neglected'
     TRANSFER = 'transfer'
     MEDICAL = 'medical'
+    TEMPORARY = 'temporary'
     OTHER = 'other'
 
     JOINED_REASONS = (
@@ -227,6 +230,7 @@ class JoinedReasons:
         (NEGLECTED, _('Neglected')),
         (TRANSFER, _('Transfer')),
         (MEDICAL, _('Medical')),
+        (TEMPORARY, _('Temporary')),
         (OTHER, _('Other')),
     )
 
@@ -237,6 +241,7 @@ class LeaveReasons:
     MEDICAL = 'medical'
     TEMPORARY = 'temporary'
     DEATH = 'death'
+    TRANSFER = 'transfer'
     OTHER = 'other'
 
     LEAVE_REASONS = (
@@ -245,6 +250,7 @@ class LeaveReasons:
         (MEDICAL, _('Medical')),
         (TEMPORARY, _('Temporary')),
         (DEATH, _('Death')),
+        (TRANSFER, _('Transfer')),
         (OTHER, _('Other')),
     )
 
@@ -264,10 +270,12 @@ class WeightConditions:
 class SterilizedChoices:
     SPAYED = 'spayed'
     NEUTERED = 'neutered'
+    NO = 'no'
 
     STERILIZED = (
         (SPAYED, _('Spayed')),
         (NEUTERED, _('Neutered')),
+        (NO, _('No')),
     )
 
 

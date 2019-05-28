@@ -1,17 +1,13 @@
 import uuid
-
-from django.contrib.auth import get_user_model
 from django.contrib.postgres.fields import ArrayField
 from django.db import models
 from phonenumber_field.modelfields import PhoneNumberField
 
 from . import constants
 
-User = get_user_model()
-
 
 class Breed(models.Model):
-    name = models.CharField(max_length=32)
+    name = models.CharField(max_length=64)
     species = models.CharField(choices=constants.Species.SPECIES, max_length=5)
 
     def __str__(self):
@@ -36,6 +32,7 @@ class Animal(models.Model):
         blank=False,
         choices=constants.Personalities.PERSONALITIES
     )
+    personality_description = models.TextField(null=True, blank=True)
     energy_level = models.CharField(
         max_length=9,
         null=True,
@@ -79,17 +76,20 @@ class Animal(models.Model):
         choices=constants.BiteChoices.BITE_CHOICES
     )
     for_adoption = models.CharField(
-        max_length=4,
+        max_length=5,
         null=True,
         blank=True,
         choices=constants.AdoptionChoices.ADOPTION_CHOICES
     )
     for_foster = models.CharField(
-        max_length=4,
+        max_length=5,
         null=True,
         blank=True,
         choices=constants.FosterChoices.FOSTER_CHOICES
     )
+    adoption_date = models.DateField(null=True, blank=True)
+    fostering_date = models.DateField(null=True, blank=True)
+    sheltering_background = models.TextField(null=True, blank=True)
     accommodation = models.CharField(
         max_length=9,
         null=True,
@@ -99,6 +99,7 @@ class Animal(models.Model):
     tag_id = models.CharField(max_length=64, null=True, blank=True)
     chip_producer = models.CharField(max_length=64, null=True, blank=True)
     chip_id = models.CharField(max_length=64, null=True, blank=True)
+    join_date = models.DateField(null=True, blank=True)
     joined_reason = models.CharField(
         max_length=9,
         null=True,
@@ -119,6 +120,11 @@ class Animal(models.Model):
         null=True,
         blank=True
     )
+    photo_id = models.ImageField(
+        upload_to='animals/photo_ids',
+        null=True,
+        blank=True
+    )
 
     organization = models.ForeignKey('organizations.Organization', on_delete=models.CASCADE)
 
@@ -127,8 +133,8 @@ class Animal(models.Model):
 
 
 class AnimalTableMetadata(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    columns = ArrayField(models.CharField(max_length=10, blank=True), default=list)
+    user = models.OneToOneField('users.User', on_delete=models.CASCADE)
+    columns = ArrayField(models.CharField(max_length=32, blank=True), default=list)
 
     def __str__(self):
         return ', '.join(self.columns)
@@ -144,7 +150,7 @@ class AnimalHealth(models.Model):
     disabled = models.BooleanField(null=True, blank=True)
     injured = models.BooleanField(null=True, blank=True)
     cryptorchid = models.BooleanField(null=True, blank=True)
-    sterilized = models.CharField(max_length=8, null=True, blank=True)
+    sterilized = models.CharField(max_length=8, null=True, blank=True, choices=constants.SterilizedChoices.STERILIZED)
     sterilized_date = models.DateField(null=True, blank=True)
     eyes_sight = models.CharField(max_length=9, null=True, blank=True, choices=constants.EyesSights.EYES_SIGHTS)
     blind = models.CharField(max_length=7, null=True, blank=True, choices=constants.BlindChoices.BLIND_CHOICES)
@@ -237,6 +243,10 @@ class AnimalOwner(models.Model):
     )
     profile_id_image = models.ImageField(
         upload_to='animals/owners/profile_id_images',
+        null=True,
+        blank=True
+    )
+    registration_date = models.DateField(
         null=True,
         blank=True
     )

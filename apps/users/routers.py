@@ -1,6 +1,5 @@
 from django.urls import path
 from rest_framework import routers
-from rest_framework.routers import DefaultRouter
 from rest_framework_simplejwt.views import TokenRefreshView
 
 from . import views
@@ -58,8 +57,9 @@ class UserRouter(routers.SimpleRouter):
             url=r'^profile{trailing_slash}$',
             mapping={
                 'put': 'update',
-                'patch': 'update_partial',
+                'patch': 'partial_update',
                 'get': 'retrieve',
+                'delete': 'destroy',
             },
             name='{basename}-detail',
             detail=True,

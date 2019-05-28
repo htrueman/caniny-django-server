@@ -20,8 +20,8 @@ class AnimalBreedSerializer(serializers.ModelSerializer):
 
 
 class AnimalListSerializer(serializers.ModelSerializer):
-    age = serializers.SerializerMethodField()
-    image = Base64ImageField(source='photo', required=False)
+    image = Base64ImageField(source='photo', required=False, represent_in_base64=True)
+    image_id = Base64ImageField(source='photo_id', required=False, represent_in_base64=True)
 
     def get_age(self, obj):
         return obj.age if obj.age else relativedelta(datetime.datetime.now(), obj.date_of_birth).years
@@ -46,6 +46,7 @@ class AnimalListSerializer(serializers.ModelSerializer):
             'origin_country',
             'pregnant',
             'personality',
+            'personality_description',
             'energy_level',
             'cats_friendly',
             'dogs_friendly',
@@ -59,17 +60,18 @@ class AnimalListSerializer(serializers.ModelSerializer):
             'tag_id',
             'chip_producer',
             'chip_id',
+            'join_date',
             'joined_reason',
             'entry_date',
             'leave_reason',
             'leave_date',
             'history',
             'image',
+            'image_id',
+            'adoption_date',
+            'fostering_date',
+            'sheltering_background',
         )
-
-        extra_kwargs = {
-            'date_of_birth': {'write_only': True},
-        }
 
 
 class AnimalHealthCareSerializer(serializers.ModelSerializer):
@@ -83,7 +85,7 @@ class AnimalHealthCareSerializer(serializers.ModelSerializer):
 
 
 class AnimalHealthSerializer(serializers.ModelSerializer):
-    care_values = AnimalHealthCareSerializer(source='animalhealthcare_set', many=True)
+    care_values = AnimalHealthCareSerializer(source='animalhealthcare_set', many=True, required=False)
 
     class Meta:
         model = AnimalHealth
@@ -139,8 +141,8 @@ class AnimalTrainingSerializer(serializers.ModelSerializer):
 
 
 class AnimalOwnerSerializer(serializers.ModelSerializer):
-    profile_image_base = Base64ImageField(source='profile_image', required=False)
-    profile_id_image_base = Base64ImageField(source='profile_id_image', required=False)
+    profile_image_base = Base64ImageField(source='profile_image', required=False, represent_in_base64=True)
+    profile_id_image_base = Base64ImageField(source='profile_id_image', required=False, represent_in_base64=True)
 
     class Meta:
         model = AnimalOwner
@@ -158,6 +160,7 @@ class AnimalOwnerSerializer(serializers.ModelSerializer):
             'comment',
             'profile_image_base',
             'profile_id_image_base',
+            'registration_date',
         )
 
 
@@ -182,6 +185,7 @@ class AnimalDetailSerializer(AnimalListSerializer):
             'origin_country',
             'pregnant',
             'personality',
+            'personality_description',
             'energy_level',
             'cats_friendly',
             'dogs_friendly',
@@ -195,12 +199,17 @@ class AnimalDetailSerializer(AnimalListSerializer):
             'tag_id',
             'chip_producer',
             'chip_id',
+            'join_date',
             'joined_reason',
             'entry_date',
             'leave_reason',
             'leave_date',
             'history',
             'image',
+            'image_id',
+            'adoption_date',
+            'fostering_date',
+            'sheltering_background',
 
             'health',
             'appearance',
@@ -208,15 +217,13 @@ class AnimalDetailSerializer(AnimalListSerializer):
             'owners',
         )
 
-        extra_kwargs = {
-            'date_of_birth': {'write_only': True},
-        }
-
     def validate(self, data):
         if data.get('age') and data.get('date_of_birth'):
             raise serializers.ValidationError([_("Set only age or date of birth.")])
-        elif not data.get('age') and not data.get('date_of_birth'):
-            raise serializers.ValidationError([_("Set either age or date of birth.")])
+        # if data.get('date_of_birth'):
+        #     data['age'] = relativedelta(datetime.datetime.now(), data.get('date_of_birth')).years
+        # elif (not data.get('age')) and (not data.get('date_of_birth')):
+        #     raise serializers.ValidationError([_("Set either age or date of birth.")])
         return data
 
     def create(self, validated_data):
@@ -228,7 +235,7 @@ class AnimalDetailSerializer(AnimalListSerializer):
 
         animal = Animal.objects.create(**validated_data)
 
-        if animalhealth:
+        if animalhealth or len(animalhealthcare_set) > 0:
             health = AnimalHealth.objects.create(animal=animal, **animalhealth)
             for animalhealthcare in animalhealthcare_set:
                 AnimalHealthCare.objects.create(animal_health=health, **animalhealthcare)

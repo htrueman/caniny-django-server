@@ -1,3 +1,5 @@
+import base64
+
 from django.contrib.auth import get_user_model
 from rest_framework import viewsets, mixins, status
 from rest_framework.decorators import api_view, action, permission_classes
@@ -18,7 +20,8 @@ from .constants import UserTypes
 from .utils import account_activation_token
 from .serializers import UserSignUpSerializer, UserSignUpGoogleSerializer, UserSignUpFBSerializer, \
     UserSignUpIGSerializer, LoginSerializer, RequestAccessSerializer, \
-    PasswordResetSendLinkSerializer, PasswordResetSerializer, UserSerializer, SuperAdminUserSerializer
+    PasswordResetSendLinkSerializer, PasswordResetSerializer, UserSerializer, SuperAdminUserSerializer, \
+    PasswordChangeSerializer
 from . import permissions as user_permissions
 
 User = get_user_model()
@@ -132,6 +135,11 @@ class ConfirmPasswordResetView(GenericAPIView):
 
 
 class UserFilter(filters.FilterSet):
+    phone_number__iexact = filters.CharFilter(method='phone_number_filter')
+    phone_number__icontains = filters.CharFilter(method='phone_number_filter')
+    phone_number__istartswith = filters.CharFilter(method='phone_number_filter')
+    phone_number__iendswith = filters.CharFilter(method='phone_number_filter')
+
     class Meta:
         model = User
         fields = {
@@ -142,6 +150,9 @@ class UserFilter(filters.FilterSet):
             'user_type': ['iexact'],
             'join_date': ['exact', 'gte', 'lte'],
         }
+
+    def phone_number_filter(self, queryset, filter_key, value):
+        return queryset.filter(**{filter_key: base64.b64decode(value).decode('utf-8')})
 
 
 class UserViewSet(BulkDeleteMixin, viewsets.ModelViewSet):
@@ -167,7 +178,7 @@ class UserViewSet(BulkDeleteMixin, viewsets.ModelViewSet):
 
     def get_serializer_class(self):
         if self.action == 'change_password':
-            return PasswordResetSerializer
+            return PasswordChangeSerializer
         elif self.action == 'bulk_delete':
             return BulkDeleteSerializer
         elif self.action in ['update', 'create', 'partial_update'] and self.request.user.user_type in [
@@ -179,8 +190,10 @@ class UserViewSet(BulkDeleteMixin, viewsets.ModelViewSet):
         return UserSerializer
 
     def get_permissions(self):
-        if self.action in ('destroy', 'update', 'partial_update', 'change_password', 'bulk_delete',):
+        if self.action in ('bulk_delete',):
             return [user_permissions.SuperAdminPermission()]
+        elif self.action == 'change_password':
+            return [AllowAny()]
         return super().get_permissions()
 
     def get_queryset(self, ids=None):

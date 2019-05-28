@@ -6,6 +6,7 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 from phonenumber_field.modelfields import PhoneNumberField
 
+from animals.models import AnimalTableMetadata
 from .constants import UserTypes
 
 
@@ -138,6 +139,10 @@ class User(AbstractBaseUser, PermissionsMixin):
     def __str__(self):
         value = self.email if self.email else self.id
         return '{}'.format(value)
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.__pk = self.pk
 
     def save(self, *args, **kwargs):
         if self.is_staff and self.is_superuser:

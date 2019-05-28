@@ -5,7 +5,6 @@ from . import views
 
 router = DefaultRouter()
 router.register('animals', views.AnimalViewSet, base_name='Animal')
-# router.register('table_metadata', views.AnimalTableMetadataViewSet, base_name='AnimalTableMetadata')
 
 urlpatterns = router.urls
 
