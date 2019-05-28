@@ -190,7 +190,7 @@ class UserViewSet(BulkDeleteMixin, viewsets.ModelViewSet):
         return UserSerializer
 
     def get_permissions(self):
-        if self.action in ('destroy', 'update', 'partial_update', 'change_password', 'bulk_delete',):
+        if self.action in ('bulk_delete',):
             return [user_permissions.SuperAdminPermission()]
         elif self.action == 'change_password':
             return [AllowAny()]

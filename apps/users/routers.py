@@ -59,6 +59,7 @@ class UserRouter(routers.SimpleRouter):
                 'put': 'update',
                 'patch': 'partial_update',
                 'get': 'retrieve',
+                'delete': 'destroy',
             },
             name='{basename}-detail',
             detail=True,
