@@ -338,6 +338,7 @@ class SuperAdminUserSerializer(UserSerializer):
         message = render_to_string('forgot_password_email.html', {
             'domain': settings.HOST_NAME,
             'password': user_password,
+            'name': user.first_name,
         })
         send_mail(
             'Your Caniny password',
