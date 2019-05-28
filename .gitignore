@@ -108,3 +108,6 @@ staticfiles/
 db.sqlite3
 vars.env
 *.pid
+*.sock
+*.log
+*.pid
