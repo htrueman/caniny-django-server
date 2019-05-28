@@ -192,6 +192,8 @@ class UserViewSet(BulkDeleteMixin, viewsets.ModelViewSet):
     def get_permissions(self):
         if self.action in ('destroy', 'update', 'partial_update', 'change_password', 'bulk_delete',):
             return [user_permissions.SuperAdminPermission()]
+        elif self.action == 'change_password':
+            return [AllowAny()]
         return super().get_permissions()
 
     def get_queryset(self, ids=None):
