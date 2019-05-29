@@ -15,7 +15,8 @@ services:
       - UWSGI_INI=/app/uwsgi.ini
       - NGINX_PORT=80
     volumes:
-      - '.:/app'
+      - .:/app
+      - /root/react_client/:/react_client
       - ./data/certbot/conf:/etc/letsencrypt
       - ./data/certbot/www:/var/www/certbot
     ports:

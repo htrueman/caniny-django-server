@@ -2,9 +2,9 @@ from .base import *
 
 DEBUG = True
 
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_PASSWORD = 'Vege12ve'
-EMAIL_HOST_USER = 'vege1wgw@gmail.com'
+EMAIL_HOST = 'smtp.sendgrid.net'
+EMAIL_HOST_USER = 'Nexu'
+EMAIL_HOST_PASSWORD = 'vege12ve'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
