@@ -34,5 +34,41 @@ class Organization(models.Model):
         blank=True
     )
 
+    schedule_monday = models.CharField(
+        max_length=128,
+        null=True,
+        blank=True
+    )
+    schedule_tuesday = models.CharField(
+        max_length=128,
+        null=True,
+        blank=True
+    )
+    schedule_wednesday = models.CharField(
+        max_length=128,
+        null=True,
+        blank=True
+    )
+    schedule_thursday = models.CharField(
+        max_length=128,
+        null=True,
+        blank=True
+    )
+    schedule_friday = models.CharField(
+        max_length=128,
+        null=True,
+        blank=True
+    )
+    schedule_saturday = models.CharField(
+        max_length=128,
+        null=True,
+        blank=True
+    )
+    schedule_sunday = models.CharField(
+        max_length=128,
+        null=True,
+        blank=True
+    )
+
     def __str__(self):
         return 'id: {}, name: {}'.format(self.id, self.name)

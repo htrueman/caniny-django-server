@@ -27,4 +27,12 @@ class OrganizationDetailSerializer(serializers.ModelSerializer):
             'address',
             'description',
             'logo_image',
+
+            'schedule_monday',
+            'schedule_tuesday',
+            'schedule_wednesday',
+            'schedule_thursday',
+            'schedule_friday',
+            'schedule_saturday',
+            'schedule_sunday',
         )
