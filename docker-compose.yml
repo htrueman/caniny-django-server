@@ -9,54 +9,39 @@ services:
     stdin_open: true
     env_file:
       - vars.env
-  dev_server:
-    build: .
-    environment:
-      - UWSGI_INI=/app/uwsgi.ini
-      - NGINX_PORT=8000
-    volumes:
-      - .:/app
-      - /root/react_client/:/react_client
-      - ./data/certbot/conf:/etc/letsencrypt
-      - ./data/certbot/www:/var/www/certbot
-    ports:
-      - '8000:8000'
-      - '444:444'
-    entrypoint: bash -c "uwsgi --ini /app/uwsgi.ini && service nginx start && tail -f caniny.log"
-    command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
-    env_file:
-      - vars.env
-    depends_on:
-      - dev_certbot
-  dev_certbot:
-    image: certbot/certbot
-    volumes:
-      - ./data/certbot/conf:/etc/letsencrypt
-      - ./data/certbot/www:/var/www/certbot
-    entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
-#  django:
+#  dev_server:
 #    build: .
+#    environment:
+#      - UWSGI_INI=/app/uwsgi.ini
+#      - NGINX_PORT=8000
 #    volumes:
-#      - '.:/app'
+#      - .:/app
+#      - /root/react_client/:/react_client
+#      - ./data/certbot/conf:/etc/letsencrypt
+#      - ./data/certbot/www:/var/www/certbot
 #    ports:
 #      - '8000:8000'
-#    tty: true
-#    stdin_open: true
-#    command: bash -c "python3 manage.py migrate && python3 manage.py runserver 0.0.0.0:8000"
+#      - '444:444'
+#    entrypoint: bash -c "uwsgi --ini /app/uwsgi.ini && service nginx start && tail -f caniny.log"
+#    command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
 #    env_file:
 #      - vars.env
-#  redis:
-#    image: redis
-#    ports:
-#      - '6379:6379'
-#  celery:
-#    build: .
+#    depends_on:
+#      - dev_certbot
+#  dev_certbot:
+#    image: certbot/certbot
 #    volumes:
-#      - '.:/app'
-#    command: celery worker -A caniny --loglevel=INFO
-#    env_file:
-#      - vars.env
-#networks:
-#  default:
-#    external:
-#      name: nginx-rtmp_default
+#      - ./data/certbot/conf:/etc/letsencrypt
+#      - ./data/certbot/www:/var/www/certbot
+#    entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
+  django:
+    build: .
+    volumes:
+      - '.:/app'
+    ports:
+      - '8000:8000'
+    tty: true
+    stdin_open: true
+    command: bash -c "python3 manage.py migrate && python3 manage.py runserver 0.0.0.0:8000"
+    env_file:
+      - vars.env
