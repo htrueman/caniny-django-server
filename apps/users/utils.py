@@ -22,4 +22,4 @@ def send_activation_token(mail_subject, template_name, user, email):
         'uid': user.pk,
         'token': account_activation_token.make_token(user),
     })
-    send_mail(mail_subject, message, settings.DEFAULT_FROM_EMAIL, (email,))
+    send_mail(mail_subject, message, settings.DEFAULT_FROM_EMAIL, (email,), html_message=message,)
