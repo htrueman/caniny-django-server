@@ -1,6 +1,6 @@
 version: "3"
 services:
-  postgresdb:
+  dev_postgresdb:
     image: postgres
     restart: always
     expose:
@@ -9,26 +9,26 @@ services:
     stdin_open: true
     env_file:
       - vars.env
-  server:
+  dev_server:
     build: .
     environment:
       - UWSGI_INI=/app/uwsgi.ini
-      - NGINX_PORT=80
+      - NGINX_PORT=8000
     volumes:
       - .:/app
       - /root/react_client/:/react_client
       - ./data/certbot/conf:/etc/letsencrypt
       - ./data/certbot/www:/var/www/certbot
     ports:
-      - '80:80'
-      - '443:443'
+      - '8000:8000'
+      - '444:444'
     entrypoint: bash -c "uwsgi --ini /app/uwsgi.ini && service nginx start && tail -f caniny.log"
     command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
     env_file:
       - vars.env
     depends_on:
-      - certbot
-  certbot:
+      - dev_certbot
+  dev_certbot:
     image: certbot/certbot
     volumes:
       - ./data/certbot/conf:/etc/letsencrypt
