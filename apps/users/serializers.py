@@ -344,7 +344,8 @@ class SuperAdminUserSerializer(UserSerializer):
             'Your Caniny password',
             message,
             settings.DEFAULT_FROM_EMAIL,
-            (user.email,)
+            (user.email,),
+            html_message=message,
         )
 
     def update(self, instance, validated_data):
